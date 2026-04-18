@@ -17,15 +17,15 @@ export function Footer() {
               <img
                 src="/hrabhiyaan-logo.png"
                 alt="HRabhiyaan Logo"
-                className="h-14 md:h-20 w-auto object-contain"
+                className="h-35 md:h-35 w-auto object-contain"
               />
             </Link>
             <p className="font-inter text-muted text-sm leading-relaxed max-w-xs mb-8">
               The architectural curator for modern human resources. Manage your team with executive-level clarity and workforce intelligence.
             </p>
             
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
+            {/* Social Icons - Increased size for mobile */}
+            <div className="flex items-center gap-4">
               {[ 
                 { icon: FaTwitter, href: '#', label: 'Twitter' },
                 { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
@@ -36,15 +36,15 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 hover:scale-110 transition-all duration-300"
+                  className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-surface-container-high flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 hover:scale-110 transition-all duration-300"
                 >
-                  <social.icon className="text-lg" />
+                  <social.icon className="text-xl md:text-lg" />
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Platform Links + App Store */}
+          {/* Platform Links + App Store (Desktop Only) */}
           <div className="lg:col-span-2 lg:col-start-6 flex flex-col">
             <h4 className="font-manrope font-bold text-foreground text-xs uppercase tracking-widest mb-6">Platform</h4>
             <ul className="flex flex-col gap-3.5">
@@ -54,8 +54,8 @@ export function Footer() {
               <li><Link href="#" className="font-inter text-muted hover:text-primary transition-colors duration-300 text-sm">API Docs</Link></li>
             </ul>
             
-            {/* App Store under Platform */}
-            <div className="mt-auto pt-8">
+            {/* App Store under Platform - Desktop Only */}
+            <div className="hidden lg:block mt-auto pt-8">
               <h5 className="font-manrope font-bold text-foreground text-[10px] uppercase tracking-widest mb-3 opacity-50">Get the App</h5>
               <Link 
                 href="#" 
@@ -70,7 +70,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Company Links + Play Store */}
+          {/* Company Links + Play Store (Desktop Only) */}
           <div className="lg:col-span-2 flex flex-col">
             <h4 className="font-manrope font-bold text-foreground text-xs uppercase tracking-widest mb-6">Company</h4>
             <ul className="flex flex-col gap-3.5">
@@ -80,8 +80,8 @@ export function Footer() {
               <li><Link href="/contact" className="font-inter text-muted hover:text-primary transition-colors duration-300 text-sm">Contact</Link></li>
             </ul>
             
-            {/* Play Store under Company */}
-            <div className="mt-auto pt-8">
+            {/* Play Store under Company - Desktop Only */}
+            <div className="hidden lg:block mt-auto pt-8">
               <Link 
                 href="#" 
                 className="group flex items-center gap-3 bg-surface-container-high hover:bg-primary text-foreground hover:text-white px-4 py-3 rounded-xl border border-outline-variant/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 w-full"
@@ -109,6 +109,36 @@ export function Footer() {
               <li><Link href="#" className="font-inter text-muted hover:text-primary transition-colors duration-300 text-sm">Help Center</Link></li>
               <li><Link href="#" className="font-inter text-muted hover:text-primary transition-colors duration-300 text-sm">System Status</Link></li>
             </ul>
+          </div>
+        </div>
+
+        {/* ─── APP STORE BUTTONS - MOBILE ONLY (Side by Side) ─── */}
+        <div className="lg:hidden border-t border-outline-variant/20 pt-8 pb-8">
+          <h5 className="font-manrope font-bold text-foreground text-xs uppercase tracking-widest mb-4 text-center">Get the App</h5>
+          <div className="flex flex-row gap-4 justify-center">
+            {/* App Store - Compact version for mobile */}
+            <Link 
+              href="#" 
+              className="group flex items-center gap-2 bg-surface-container-high hover:bg-primary text-foreground hover:text-white px-3 py-2 rounded-lg border border-outline-variant/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
+            >
+              <FaApple className="text-lg shrink-0 transition-transform group-hover:scale-110" />
+              <div className="text-left">
+                <p className="text-[8px] uppercase tracking-widest opacity-60 font-medium leading-none">Download on</p>
+                <p className="text-xs font-bold leading-tight">App Store</p>
+              </div>
+            </Link>
+
+            {/* Google Play - Compact version for mobile */}
+            <Link 
+              href="#" 
+              className="group flex items-center gap-2 bg-surface-container-high hover:bg-primary text-foreground hover:text-white px-3 py-2 rounded-lg border border-outline-variant/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
+            >
+              <FaGooglePlay className="text-base shrink-0 transition-transform group-hover:scale-110" />
+              <div className="text-left">
+                <p className="text-[8px] uppercase tracking-widest opacity-60 font-medium leading-none">Get it on</p>
+                <p className="text-xs font-bold leading-tight">Google Play</p>
+              </div>
+            </Link>
           </div>
         </div>
 
