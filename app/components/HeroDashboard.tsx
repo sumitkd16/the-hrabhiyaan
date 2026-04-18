@@ -50,13 +50,14 @@ const sidebarContainerVariants: Variants = {
   }
 };
 
+// PREMIUM LOGO: dramatic spring spin with heavy bounce + glow burst
 const logoVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.6, rotate: -15 },
+  hidden: { opacity: 0, scale: 0, rotate: -120 },
   visible: { 
     opacity: 1, 
     scale: 1,
     rotate: 0,
-    transition: { type: "spring", stiffness: 260, damping: 20 }
+    transition: { type: "spring", stiffness: 180, damping: 8, mass: 1.4 }
   }
 };
 
@@ -137,23 +138,31 @@ export default function HeroDashboard() {
         animate="visible"
       >
         <div className="flex h-full">
-          {/* Sidebar - NO scrolling, all icons fit */}
+          {/* Sidebar */}
           <motion.div 
             className="w-14 md:w-20 bg-[#050505] flex flex-col items-center py-3 border-r border-slate-800 flex-shrink-0 overflow-hidden"
             variants={sidebarContainerVariants}
           >
-            <motion.div className="mb-2 md:mb-4 relative" variants={logoVariants}>
+            <motion.div className="mb-2 md:mb-4 relative flex items-center justify-center" variants={logoVariants}>
+              {/* Glow burst effect on logo entrance */}
+              <motion.div
+                className="absolute w-12 h-12 rounded-full bg-indigo-500/40"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: [0, 0.7, 0], scale: [0, 1.8, 2.5] }}
+                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+                style={{ filter: 'blur(10px)' }}
+              />
               <Image 
                 src="/no-back-logo.png" 
                 alt="HRMS Logo" 
                 width={40} 
                 height={40} 
-                className="drop-shadow-lg rounded-lg object-contain w-8 h-8 md:w-10 md:h-10"
+                className="drop-shadow-lg rounded-lg object-contain w-12 h-12 md:w-14 md:h-14 relative z-10"
                 priority
               />
             </motion.div>
 
-            <div className="flex flex-col gap-1 md:gap-1.5 overflow-hidden">
+            <div className="flex flex-col gap-1 md:gap-1.5 overflow-hidden no-scrollbar">
               {sidebarItems.map((item, i) => (
                 <motion.div
                   key={i}
@@ -193,7 +202,7 @@ export default function HeroDashboard() {
 
             {/* Dashboard Content - scrollable ONLY for widgets */}
             <div className="flex-1 p-2 md:p-4 space-y-2 md:space-y-3 overflow-y-auto no-scrollbar">
-              {/* TOP STATS */}
+              {/* TOP STATS - with hover effect (previous version) */}
               <motion.div 
                 className="grid grid-cols-2 lg:grid-cols-4 gap-2"
                 variants={statsContainerVariants}
@@ -219,12 +228,12 @@ export default function HeroDashboard() {
                 ))}
               </motion.div>
 
-              {/* MIDDLE ROW */}
+              {/* MIDDLE ROW - with hover effect (previous version) */}
               <motion.div 
                 className="grid grid-cols-1 md:grid-cols-3 gap-2"
                 variants={middleRowContainerVariants}
               >
-                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow" whileHover={{ y: -2 }}>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-orange-100 flex items-center justify-center">
                       <span className="material-symbols-outlined text-orange-600 text-sm">schedule</span>
@@ -255,7 +264,7 @@ export default function HeroDashboard() {
                   </div>
                 </motion.div>
 
-                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow" whileHover={{ y: -2 }}>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center">
                       <span className="material-symbols-outlined text-amber-600 text-sm">bolt</span>
@@ -273,7 +282,7 @@ export default function HeroDashboard() {
                   </div>
                 </motion.div>
 
-                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow" whileHover={{ y: -2 }}>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center">
                       <span className="material-symbols-outlined text-amber-600 text-sm">notifications</span>
@@ -304,12 +313,12 @@ export default function HeroDashboard() {
                 </motion.div>
               </motion.div>
 
-              {/* BOTTOM ROW */}
+              {/* BOTTOM ROW - with hover effect (previous version) */}
               <motion.div 
                 className="grid grid-cols-1 md:grid-cols-2 gap-2"
                 variants={bottomRowContainerVariants}
               >
-                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow" whileHover={{ y: -2 }}>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-indigo-100 flex items-center justify-center">
                       <span className="material-symbols-outlined text-indigo-600 text-sm">task_alt</span>
@@ -334,7 +343,7 @@ export default function HeroDashboard() {
                   </div>
                 </motion.div>
 
-                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <motion.div variants={cardVariants} className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 hover:shadow-md transition-shadow" whileHover={{ y: -2 }}>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center">
                       <span className="material-symbols-outlined text-emerald-600 text-sm">emoji_events</span>

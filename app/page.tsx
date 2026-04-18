@@ -493,52 +493,75 @@ export default function Home() {
       </section>
 
       {/* Mobile App Promo */}
-      <section className="bg-on-secondary-fixed py-20 md:py-24 px-6 md:px-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-          <motion.div className="lg:w-1/2 w-full" {...fadeInUp}>
-            <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-white tight-headline mb-6 leading-tight">HR in Your Pocket</h2>
-            <p className="text-slate-400 text-base md:text-lg mb-10 leading-relaxed">
-              The full power of HRabhiyaan on mobile. Quick check-ins, leave requests, payslip viewing, and manager approvals—all from a refined mobile experience.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="bg-white/10 hover:bg-white/20 p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:-translate-y-1 transition-all w-full sm:w-auto border border-white/5 shadow-xl">
-                <FaApple className="text-white text-4xl shrink-0" />
-                <div>
-                  <p className="text-[10px] text-slate-300 uppercase font-bold tracking-widest whitespace-nowrap">Download on the</p>
-                  <p className="text-white font-bold leading-none text-lg">App Store</p>
-                </div>
-              </div>
-              <div className="bg-white/10 hover:bg-white/20 p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:-translate-y-1 transition-all w-full sm:w-auto border border-white/5 shadow-xl">
-                <FaGooglePlay className="text-white text-3xl shrink-0" />
-                <div>
-                  <p className="text-[10px] text-slate-300 uppercase font-bold tracking-widest whitespace-nowrap">Get it on</p>
-                  <p className="text-white font-bold leading-none text-lg">Google Play</p>
-                </div>
-              </div>
+<section className="py-20 md:py-24 px-6 md:px-8 overflow-hidden bg-surface">
+  <motion.div
+    initial={{ opacity: 0, scale: 0.98 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.6 }}
+    className="max-w-7xl mx-auto bg-primary text-white rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl shadow-primary/20"
+  >
+    <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+      {/* Left Content */}
+      <motion.div 
+        className="lg:w-1/2 w-full"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-white tight-headline mb-6 leading-tight">
+          HR in Your Pocket
+        </h2>
+        <p className="text-white/80 text-base md:text-lg mb-10 leading-relaxed">
+          The full power of HRabhiyaan on mobile. Quick check-ins, leave requests, payslip viewing, and manager approvals—all from a refined mobile experience.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          {/* App Store */}
+          <div className="group bg-white text-primary px-6 py-3.5 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
+            <FaApple className="text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110" />
+            <div>
+              <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold leading-none mb-0.5 group-hover:text-blue-100 transition-colors">Download on the</p>
+              <p className="text-sm font-bold leading-tight">App Store</p>
             </div>
-          </motion.div>
-
-          <motion.div
-            className="lg:w-1/2 relative flex justify-center mt-8 lg:mt-0"
-            initial={{ opacity: 0, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, type: "spring" }}
-          >
-            <div className="relative z-10 w-56 h-[450px] md:w-64 md:h-[500px] bg-slate-800 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-slate-700 shadow-2xl overflow-hidden hover:-translate-y-4 hover:shadow-primary/20 transition-all duration-500 cursor-pointer">
-              <img className="w-full h-full object-cover" alt="mobile app screen showing employee profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC71qXpkj2Wl-0JFmIMGsiOu_yHXJnQWrSFKU3XJDlMlIQ-w2EyrsR76RhxGR3eMWG5m_X7V6umDJmpmRN-tjgZVIugGDWEclYn5ebaTbtlHnu9_PYMjnh0fRbH7Bpd69bjy3-YtTEOjRMTdBm5cP1lkNApSYIebJRkPtrNsqwU47U0FrHJBWvxYzEVs2uj07i7vJBnwJdOD3Jz0fHDQvGtquO5HV1Gqx7cwQ1TPro80jJZgpCS1V0d7sgp4sPlZlS0zWwITAOAiPDr" />
+          </div>
+          {/* Google Play */}
+          <div className="group bg-white text-primary px-6 py-3.5 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
+            <FaGooglePlay className="text-xl shrink-0 transition-transform duration-300 group-hover:scale-110" />
+            <div>
+              <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold leading-none mb-0.5 group-hover:text-blue-100 transition-colors">Get it on</p>
+              <p className="text-sm font-bold leading-tight">Google Play</p>
             </div>
-            <motion.div
-              className="absolute -right-4 md:-right-10 top-10 md:top-20 z-0 w-56 h-[450px] md:w-64 md:h-[500px] bg-slate-800 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-slate-700 shadow-2xl overflow-hidden opacity-30 transform rotate-6 hidden lg:block hover:opacity-80 hover:rotate-12 transition-all duration-500 cursor-pointer"
-              initial={{ rotate: 0 }}
-              whileInView={{ rotate: 6 }}
-              viewport={{ once: true }}
-            >
-              <img className="w-full h-full object-cover" alt="mobile app screen showing payroll history" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKIbTqKtmCapMgDHtG0BdSPRpuUjsgesuhSs8Sba-EaRd632zrWHcYg8yAlDD_vhQhsFnuO6g_lWKZ1j3qZ6UXZha3a82Ybp9Tqkj3i3oHQbNJaTZfe_P3Mz2kapHpkRnDwiCP9_VBPtiqMkkl3rgWxctKyW14ox9DI2o2dUCBbY-573bn_VycW0IYqxEwreLLXMdXRjFe7XzluQ_zpbtWTj80Ni1Nd2QFhoVOEZxG2RRP05Si_jCGSxYg3PYWM620XQqBpAy3Ih_w" />
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </motion.div>
+
+      {/* Right Phones */}
+      <motion.div
+        className="lg:w-1/2 relative flex justify-center mt-8 lg:mt-0"
+        initial={{ opacity: 0, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, type: "spring" }}
+      >
+        {/* Primary Phone */}
+        <div className="relative z-10 w-56 h-[450px] md:w-64 md:h-[500px] bg-slate-800 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white/15 shadow-2xl shadow-black/20 overflow-hidden hover:-translate-y-4 hover:shadow-black/40 transition-all duration-500 cursor-pointer">
+          <img className="w-full h-full object-cover" alt="mobile app screen showing employee profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC71qXpkj2Wl-0JFmIMGsiOu_yHXJnQWrSFKU3XJDlMlIQ-w2EyrsR76RhxGR3eMWG5m_X7V6umDJmpmRN-tjgZVIugGDWEclYn5ebaTbtlHnu9_PYMjnh0fRbH7Bpd69bjy3-YtTEOjRMTdBm5cP1lkNApSYIebJRkPtrNsqwU47U0FrHJBWvxYzEVs2uj07i7vJBnwJdOD3Jz0fHDQvGtquO5HV1Gqx7cwQ1TPro80jJZgpCS1V0d7sgp4sPlZlS0zWwITAOAiPDr" />
+        </div>
+        
+        {/* Secondary Phone - WHITE border instead of slate */}
+        <motion.div
+          className="absolute -right-4 md:-right-10 top-10 md:top-20 z-0 w-56 h-[450px] md:w-64 md:h-[500px] bg-white rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white shadow-2xl overflow-hidden opacity-30 transform rotate-6 hidden lg:block hover:opacity-80 hover:rotate-12 transition-all duration-500 cursor-pointer"
+          initial={{ rotate: 0 }}
+          whileInView={{ rotate: 6 }}
+          viewport={{ once: true }}
+        >
+          <img className="w-full h-full object-cover" alt="mobile app screen showing payroll history" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKIbTqKtmCapMgDHtG0BdSPRpuUjsgesuhSs8Sba-EaRd632zrWHcYg8yAlDD_vhQhsFnuO6g_lWKZ1j3qZ6UXZha3a82Ybp9Tqkj3i3oHQbNJaTZfe_P3Mz2kapHpkRnDwiCP9_VBPtiqMkkl3rgWxctKyW14ox9DI2o2dUCBbY-573bn_VycW0IYqxEwreLLXMdXRjFe7XzluQ_zpbtWTj80Ni1Nd2QFhoVOEZxG2RRP05Si_jCGSxYg3PYWM620XQqBpAy3Ih_w" />
+        </motion.div>
+      </motion.div>
+    </div>
+  </motion.div>
+</section>
 
       {/* Pricing Table */}
       <section className="py-20 md:py-32 px-6 md:px-8 bg-surface">
