@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HRabhiyaan | The Complete HR Ecosystem</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#5c647a",
+                        "primary": "#00685f",
+                        "tertiary-container": "#007da9",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#3d4947",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-fixed": "#c4e7ff",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed": "#00201d",
+                        "surface-tint": "#006a61",
+                        "tertiary": "#006387",
+                        "secondary-fixed": "#dae2fd",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "background": "#f7f9fb",
+                        "primary-container": "#008378",
+                        "on-background": "#191c1e",
+                        "on-tertiary-container": "#fcfcff",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed": "#89f5e7",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#005049",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "inverse-primary": "#6bd8cb",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "outline": "#6d7a77",
+                        "secondary": "#565e74",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#bcc9c6",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "on-primary-container": "#f4fffc",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tight-headline {
+            letter-spacing: -0.02em;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background font-body antialiased">
+<!-- TopNavBar -->
+<nav class="bg-white dark:bg-slate-900 sticky top-0 w-full z-50 tonal shift using bg-slate-50 dark:bg-slate-800/50">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white font-headline">HRabhiyaan</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-teal-700 dark:text-teal-400 font-semibold border-b-2 border-teal-700 dark:border-teal-400 pb-1 Manrope transition-colors duration-200" href="#">Features</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-teal-600 transition-colors duration-200" href="#">Solutions</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-teal-600 transition-colors duration-200" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-teal-600 transition-colors duration-200" href="#">Blog</a>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-lg font-semibold transition-all active:scale-95">Book Demo</button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-20 pb-32 px-8">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<h1 class="font-headline text-display-lg text-on-secondary-fixed leading-[1.1] tight-headline mb-6 text-[3.5rem] font-bold">
+                        The Complete HR Ecosystem for <span class="text-primary">Modern Teams</span>
+</h1>
+<p class="text-on-secondary-container text-lg mb-10 max-w-xl leading-relaxed">
+                        Streamline your entire employee lifecycle with AI-driven insights, geospatial attendance, and seamless payroll. Built for scale, designed for people.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-primary-container transition-all">Book a Free Demo</button>
+<button class="bg-secondary-container text-on-secondary-fixed px-8 py-4 rounded-lg font-bold hover:bg-surface-container-high transition-all">Explore Features</button>
+</div>
+</div>
+<div class="relative">
+<div class="bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden border border-outline-variant/15 transform lg:rotate-2 lg:hover:rotate-0 transition-transform duration-700">
+<img class="w-full h-auto" data-alt="clean enterprise dashboard interface with colorful bar charts, employee directory list and teal action buttons in a light minimalist style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLM3IQw-kpW8xEMfYrro7Nt1pKKerfseG3-x1CXc-nXAkr3EZ97kCyxzQTZFZ5Jej0u5VZ7FBnHFtWSa6LbHKMANelBuhBrMn3XHgf-1X4DxVbrVbqGc5GN-47limTUcKUvTKB-eJ79Vve5BFa5m4zNS1hi6PRaOAQq4Jgaxc2vOzCVJRyZis1Kb_NjiuAd3KyHvhNbjLhTAMZBHzJ7GDdTIiCrVo26vahj-bhghWYp5qogRQq1umRNvXxqZeNsmD8wxsS0JSFRE-L"/>
+<div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border border-outline-variant/10 max-w-[200px]">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant">Retention Rate</p>
+<p class="font-bold text-on-secondary-fixed">94.2%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-12 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<p class="text-center text-on-secondary-container font-semibold uppercase tracking-widest text-xs mb-10">Trusted by Forward-Thinking Enterprise Teams</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale">
+<img class="h-8" data-alt="minimalist corporate logo of a tech company in grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEka-134u92pt4JkVIpTxcuDc_Naa12ttG7EoaItfee7lFyGO8g911P4zS4GspKMKq1Z3szTEEUv39mhpn0My1eiz8x0Vb5L6uUiYrUBzGeie2tASGtlRul1QWEan3UnGAVDz1zhE7bEgeuGxymdt22RLn04cK0Bh04sjyc7fYtZeQOp_SKf2AF3UrhtS8xI64fgbTd45qVYSMeRbd_7r4kTLEMegkvgWzyAsIcQiU7eXm5RA3aP83UrXnAmiwDLvchjSQIcclh1_i"/>
+<img class="h-8" data-alt="modern abstract emblem logo for an enterprise firm in grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKJu8D57W-zOW3nmRi2axHpSOp8BFjpmzDWFY9Qvr6cnNmMDibTnnvSrICF5iNOr2uPzi8WEgVkmwhuTYkfiyYvJQe2qWV-dFy1NMtj409rxYkBCNm7TBOIFwSWe5yPEX3IsLQF8O-Da44erxcrReRzq5R-v54WUvYz1dgyQX6fQyY1PPnm398xxmGLM0VOG_YtWkRdR4ndsTiBDGPyFcl923kVovurZIrCW3l2JCxSnIOsjMBKk9M-SpB-_UZdF3VdOJhxPYqlAlj"/>
+<img class="h-8" data-alt="geometric professional brand logo for a startup in grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxPD2HNrKFn7GTen3ZtfJul2_9LSNyRHGJcuAhZgR_bNkiYGxvV-p0q6dEk-jmsLdXSrHdDXUUtax_2f0nleI2aQ9ljIl7T9er6wULXeO4PSYb8EiTnl5AS8SkwfHNgkH8dsJNTr8fJ5dgc9tNiG4dSZGQjxLz3fcMR2v--q4mqJVd3vlBkNGpFTfWuQhVo6s8Mtb8FksYDvhpj4fzwn1mR21UmcZRdKVTMcEP3xUIjZ39fay1j-0ZbYqWt9WZQM_fU_7w_Xk-YaZ"/>
+<img class="h-8" data-alt="sleek typography-based company logo in grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvI0SXSefzz9KusBbH2f8tbp1-XXLaxkQhSdDNTE6wCQ1MErAsXhwZ5GL-PCVo9M6YBBsV18Q3A-S5T7WiiPI8oZ_LoU22GyAoxaV7K4aqA6EZh1Izk452YbiUmhXbJOYnTWwuzMzxlbheLopn1xQwoDbU7NOkRWzUcYhj9dqSYRhmX5flmP6qATAVvQgAeI5XoMLUs-YcaYwEYXpkyRGShFpGSZAa7wfTx3DM5nJw2QTaphkcHLOOwabm_oKhkGy7SyVxAcvjJpQL"/>
+<img class="h-8" data-alt="contemporary architectural firm logo in grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhzd2I-SHFjhokHFsWNv1tsAJFE5KJ6B9PGgeW-ytktIYEascsLBSlfVTWDfX7u4wPFxKX-xFyfIKvx3smGBZVY7oEJF6vFXpx42kX6A8bk_mra0USyPFj5nIpTOaa5zq__DHMCv2GftfLHk7CvDTA0kc3WSmMMGInOXMFaVMXuaFU96XkdEG4h0WAryvbLOhMkWNoP9s3f17jTqPjrHgus1yfp-1ImMXos7ZNMcpeFmTyci1Ytct338RfKUibNBTyxB9DMCmQ1qqS"/>
+</div>
+</div>
+</section>
+<!-- USP (Geospatial Intelligence) -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/20">
+<div class="bg-white p-4 flex items-center justify-between border-b border-surface-variant">
+<span class="font-headline font-bold text-on-secondary-fixed">Live Workforce Map</span>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-red-400"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+<span class="w-3 h-3 rounded-full bg-green-400"></span>
+</div>
+</div>
+<img class="w-full h-[400px] object-cover" data-alt="digital map interface showing user location pings with green verified checkmarks over a modern city grid" data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIES03DfUsHurM7C0im1slegRdfymBYEnTTwXSQnBkZ2erVv9-cVOQRXwRprOi02JvUBVx3G4UdPHroOa0_ty_isYD0_QKbfQ5iPXtdhrAgwJzN_wz5gLhT05vS8IaWay3julWVqRGWTsj-jyyJZyrRcfXfkocAA0yDTS0T-uueEAySIQ4IBrMgUeP-WwaNJNd28yR5wm4Abu8A2ecl7i2rGwpXiPDCDtKfF-TXkko_2Ebwo0wtEuYF4T0Zs4VvPiwSJQW4MroB9vo"/>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="glass-effect p-3 rounded-xl border border-white/40 shadow-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="person_pin_circle">person_pin_circle</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-secondary-fixed">Marcus Thorne</p>
+<p class="text-[10px] text-primary font-medium">Checked-in at HQ • 09:01 AM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                        GEOSPATIAL INTELLIGENCE
+                    </div>
+<h2 class="font-headline text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-6 leading-tight">Know Where Your <br/>Work Happens.</h2>
+<p class="text-on-secondary-container text-lg mb-8 leading-relaxed">
+                        Say goodbye to proxy attendance. Our location-verified pings ensure your field teams and office staff are exactly where they need to be, with automated geofencing for remote check-ins.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<span class="text-on-secondary-fixed font-medium">Tamper-proof location verification</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="radar">radar</span>
+<span class="text-on-secondary-fixed font-medium">Automated geofencing for job sites</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+<span class="text-on-secondary-fixed font-medium">Real-time movement history logs</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 bg-surface-container-low px-8">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-4">Unified HR Operations</h2>
+<p class="text-on-secondary-container max-w-2xl mx-auto">Everything you need to manage your global workforce from hire to retire, in one integrated environment.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Item 1 -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-all group">
+<div class="flex justify-between items-start mb-12">
+<div>
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="dashboard">dashboard</span>
+<h3 class="text-xl font-bold text-on-secondary-fixed mb-2">Smart Dashboard</h3>
+<p class="text-on-secondary-container text-sm">Real-time metrics at your fingertips. Visualize trends, headcounts, and operational costs instantly.</p>
+</div>
+<img class="h-24 w-auto grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist teal line chart showing upward growth trend on a clean white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfh6DK8PaTCl-HdmwuNnPf45nw1yCGklEgqNwcwwQKr12_Kye5LGmGSCPiD7-F81Lo3z3AjCliomcwA10kWc48GMhpGuw2pbiAhi5y3HauTy9wmjBAp28p1b025t-XOlZcDZi7ejlaX8PhdU7jqPKtJMO59eJ2UV9op-em8sS1m25eNlliXteo_0IHOExH8OutwFrcgni1DyJsjRw8EJBstZKWHgBCcnnaHcv0acGkFQlPGJcqfLkWypfyR_rCzufzrAsdiiv-3X-y"/>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4" data-icon="person_add">person_add</span>
+<h3 class="text-xl font-bold text-on-secondary-fixed mb-2">Talent Acquisition</h3>
+<p class="text-on-secondary-container text-sm">From job posting to e-offer letters, manage your pipeline with AI candidate ranking.</p>
+</div>
+<!-- Bento Item 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="groups">groups</span>
+<h3 class="text-xl font-bold text-on-secondary-fixed mb-2">Workforce Mgmt</h3>
+<p class="text-on-secondary-container text-sm">Shift scheduling, leave tracking, and capacity planning for distributed teams.</p>
+</div>
+<!-- Bento Item 4 -->
+<div class="md:col-span-2 bg-on-secondary-fixed p-8 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<span class="material-symbols-outlined text-primary-fixed text-3xl mb-4" data-icon="insights">insights</span>
+<h3 class="text-xl font-bold text-white mb-2">Performance &amp; Growth</h3>
+<p class="text-slate-400 text-sm">360-degree feedback, OKRs, and professional development paths that actually drive results.</p>
+</div>
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-2 border-on-secondary-fixed bg-slate-700"></div>
+<div class="w-12 h-12 rounded-full border-2 border-on-secondary-fixed bg-slate-600"></div>
+<div class="w-12 h-12 rounded-full border-2 border-on-secondary-fixed bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Bento Item 5 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="account_balance">account_balance</span>
+<h3 class="text-xl font-bold text-on-secondary-fixed mb-2">Finance &amp; Admin</h3>
+<p class="text-on-secondary-container text-sm">Automated payroll, tax compliance, and expense management for 50+ countries.</p>
+</div>
+<!-- Bento Item 6 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4" data-icon="settings_suggest">settings_suggest</span>
+<h3 class="text-xl font-bold text-on-secondary-fixed mb-2">HR Operations</h3>
+<p class="text-on-secondary-container text-sm">Policy management, document storage, and employee self-service portals.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Messenger & Integrations -->
+<section class="py-32 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row items-center gap-20 mb-32">
+<div class="flex-1">
+<h2 class="font-headline text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-6 leading-tight">Bridge the Distance with <br/>Native Messaging</h2>
+<p class="text-on-secondary-container text-lg mb-8 leading-relaxed">
+                            Stop switching between Slack and HR tools. Our built-in messenger keeps employee conversations tied directly to their profiles and project workflows.
+                        </p>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                            View all collaboration tools <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="flex-1 bg-surface-container-low p-8 rounded-3xl relative">
+<div class="bg-white rounded-2xl shadow-xl p-4 max-w-sm ml-auto mb-4 border border-outline-variant/10">
+<p class="text-xs font-bold text-primary mb-1">HR Admin</p>
+<p class="text-sm text-on-secondary-fixed">Hi Sarah, your leave for the upcoming marathon has been approved! 🏃‍♀️</p>
+</div>
+<div class="bg-primary text-white rounded-2xl shadow-xl p-4 max-w-sm mr-auto border border-primary/20">
+<p class="text-xs font-bold text-primary-fixed mb-1">Sarah Chen</p>
+<p class="text-sm">Awesome! Thanks for the quick update. See you Monday!</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row-reverse items-center gap-20">
+<div class="flex-1">
+<h2 class="font-headline text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-6 leading-tight">Works with the Tools <br/>You Already Love</h2>
+<p class="text-on-secondary-container text-lg mb-8 leading-relaxed">
+                            HRabhiyaan integrates seamlessly with Zoom, Google Workspace, Microsoft 365, and Jira to keep your existing workflows moving.
+                        </p>
+<div class="grid grid-cols-4 gap-6">
+<div class="aspect-square bg-surface-container rounded-xl flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+<img class="h-6 opacity-60" data-alt="zoom icon logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_bSeZLlutfrWHwS5yZ8Va0nl-bCOqHW2wkaj95_BhUtUAoEiBX3-mBK_e72AZYNdMFdNtZrJcDXxtoTma87rPXxI13CNdTd13wm2tgdXsGbligrVTQdrrgXVDqMYTWKJ_cPbHPmOtOSV-jxyHf9VnQzKyRnWzBsvLsj1vBkTeugSZBjrgcJUJqDMJO1HlTI3bSsKY0tm07xkojIfMa0oQKMDzHeuTlucgLeIL6O8bV6PFNqPz-NXB7daUtTWpXI4Ros5xkR5u7KYJ"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-xl flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+<img class="h-6 opacity-60" data-alt="google calendar icon logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhhJ9VHKLdOJqebLKUXe3xKesrhs688aedAb5crYKvoUDF9Wk0DnRoZZ8_DI8Gl1nfVJ3sVH-ia3sjyikv9_73FEiG0D7-JVKZkkftvtNPAKYtmkeYidct_X89C6eBDX6FyYfpXqhijlUBwI4UH19O7LH-DS-bpMwUmHtHtiRkcEDOTQhJdFW8Ls0DR9oYGIUBAhcDbW7rMcg9ofP89eywvS1R2IAV-1UAh5JXWRlz-9v28uzjlLTMeMZ2R_InPv3pxhTBvj7puD-G"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-xl flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+<img class="h-6 opacity-60" data-alt="slack icon logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1k6RlPNqU3-hpaPM-pyrj2n3oaiRa7PApiPHKktNoQ_jeQyeiaKm354FvrOU7REQP5de89G4dlgEWLSnfknqUZ3VydtAwj_bMT1zUG-sXOxppVmlFYGi9hCYefgAJWF6uPkev01zZtg6-Ecv_M_xnHRT6R0OeP9vHzUSeyF2h9AobyDK4ooq0uUxebc0QBnoX29Wq6C-Ooujq0qzMg23iTCzuLSODZZ6Sm3ugoRocRkVSK3D6eiCNsQFxJW-UhlVlfFYnnNMY9IeZ"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-xl flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+<img class="h-6 opacity-60" data-alt="jira icon logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSlq3s_WV-DZ1irAhpe9MDv2al_EcI29WHXzixRXTqiVICsC6l1nb3a-vFHUOmcwlAZAwgxPqHX9VF6kynRzTOMBE0zvIRpqbpQp6eJaxVvKCAeYPcynUiDTSFSJQ5G-RJm-iOYJj-m1bC0y1RnpZnJ6Vb4lPd5pYJLdcZ_U7iQFl4HbBxKGsF5Vc6HuatAAc0f6TL0bHEVjEYEC_PP0uta5FGLNXfqecphhZ4aVds1jw2GKJB1MlNLu7s1UyRdopIb3jUG65hjgYP"/>
+</div>
+</div>
+</div>
+<div class="flex-1">
+<img class="w-full h-auto rounded-2xl shadow-lg" data-alt="abstract artistic visualization of connecting glowing dots representing cloud integration and software connectivity in a clean tech style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_6FZw-TylKDnhBmyXBiFuMyNuXwYhEvVOBXFBKzSD8nNO7_OMMHpg2tLEydRa_EzORg6v623sMfNh8slAETRnYHtFzuMsfFuyuW9pTQcJrUDQUg_hHE73r2jkgKygHf4JFcyKkaWotmxLgz68P5yh7beRTBPD_L22-QF0P6GBxvKSbzb-X3rVW-036iPs0spOoFIbR7NDuOiWZzeKpnzeKUC38MRae_SQofD4MeYnABLk-TM4pdmTI3ZXOcga0AKtQjaQKnyx0qIp"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Mobile App Promo -->
+<section class="bg-on-secondary-fixed py-24 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="font-headline text-[2.5rem] font-bold text-white tight-headline mb-6 leading-tight">HR in Your Pocket</h2>
+<p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                        The full power of HRabhiyaan on mobile. Quick check-ins, leave requests, payslip viewing, and manager approvals—all from a refined mobile experience.
+                    </p>
+<div class="flex gap-4">
+<div class="bg-white/10 hover:bg-white/20 p-4 rounded-xl flex items-center gap-3 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="apple">ios</span>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Download on the</p>
+<p class="text-white font-bold leading-none">App Store</p>
+</div>
+</div>
+<div class="bg-white/10 hover:bg-white/20 p-4 rounded-xl flex items-center gap-3 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="play_arrow">play_arrow</span>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Get it on</p>
+<p class="text-white font-bold leading-none">Google Play</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 relative flex justify-center">
+<div class="relative z-10 w-64 h-[500px] bg-slate-800 rounded-[3rem] border-[8px] border-slate-700 shadow-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="mobile app screen showing employee profile, attendance check-in button and a weekly calendar view in a clean light interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC71qXpkj2Wl-0JFmIMGsiOu_yHXJnQWrSFKU3XJDlMlIQ-w2EyrsR76RhxGR3eMWG5m_X7V6umDJmpmRN-tjgZVIugGDWEclYn5ebaTbtlHnu9_PYMjnh0fRbH7Bpd69bjy3-YtTEOjRMTdBm5cP1lkNApSYIebJRkPtrNsqwU47U0FrHJBWvxYzEVs2uj07i7vJBnwJdOD3Jz0fHDQvGtquO5HV1Gqx7cwQ1TPro80jJZgpCS1V0d7sgp4sPlZlS0zWwITAOAiPDr"/>
+</div>
+<div class="absolute -right-10 top-20 z-0 w-64 h-[500px] bg-slate-800 rounded-[3rem] border-[8px] border-slate-700 shadow-2xl overflow-hidden opacity-30 transform rotate-6 hidden lg:block">
+<img class="w-full h-full object-cover" data-alt="mobile app screen showing payroll history and performance review charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKIbTqKtmCapMgDHtG0BdSPRpuUjsgesuhSs8Sba-EaRd632zrWHcYg8yAlDD_vhQhsFnuO6g_lWKZ1j3qZ6UXZha3a82Ybp9Tqkj3i3oHQbNJaTZfe_P3Mz2kapHpkRnDwiCP9_VBPtiqMkkl3rgWxctKyW14ox9DI2o2dUCBbY-573bn_VycW0IYqxEwreLLXMdXRjFe7XzluQ_zpbtWTj80Ni1Nd2QFhoVOEZxG2RRP05Si_jCGSxYg3PYWM620XQqBpAy3Ih_w"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Table -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-4">Scalable Plans for Every Stage</h2>
+<p class="text-on-secondary-container">No hidden fees. Transparent pricing that grows with your team.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Starter -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all flex flex-col">
+<h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-2">Starter</h3>
+<p class="text-on-secondary-container text-sm mb-6">For small teams getting organized.</p>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-on-secondary-fixed">$49</span>
+<span class="text-on-secondary-container">/month</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Up to 20 employees</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Basic attendance</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Core HR profiles</li>
+<li class="flex items-center gap-3 text-sm text-slate-400 line-through"><span class="material-symbols-outlined text-slate-300 text-lg" data-icon="check_circle">check_circle</span> Payroll automation</li>
+</ul>
+<button class="w-full py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary/5 transition-all">Get Started</button>
+</div>
+<!-- Growth -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl border-2 border-primary shadow-2xl shadow-primary/10 relative flex flex-col transform md:-translate-y-4">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+<h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-2">Growth</h3>
+<p class="text-on-secondary-container text-sm mb-6">Perfect for mid-sized enterprises.</p>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-on-secondary-fixed">$199</span>
+<span class="text-on-secondary-container">/month</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed font-semibold"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Up to 100 employees</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed font-semibold"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Geospatial verified check-ins</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed font-semibold"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Automated payroll &amp; tax</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed font-semibold"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Performance tracking</li>
+</ul>
+<button class="w-full py-3 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:bg-primary-container transition-all">Get Started</button>
+</div>
+<!-- Enterprise -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all flex flex-col">
+<h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-2">Enterprise</h3>
+<p class="text-on-secondary-container text-sm mb-6">For large-scale global operations.</p>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-on-secondary-fixed">Custom</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Unlimited employees</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Advanced security &amp; SSO</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Dedicated account manager</li>
+<li class="flex items-center gap-3 text-sm text-on-secondary-fixed"><span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span> Custom API integrations</li>
+</ul>
+<button class="w-full py-3 rounded-lg border-2 border-on-secondary-fixed text-on-secondary-fixed font-bold hover:bg-on-secondary-fixed hover:text-white transition-all">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Blog Feed -->
+<section class="py-32 bg-surface-container-low px-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-4">Latest Insights</h2>
+<p class="text-on-secondary-container">Stay ahead of the curve with our expert HR analysis.</p>
+</div>
+<button class="text-primary font-bold hidden md:block">Read more blog posts →</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-outline-variant/10">
+<img class="w-full h-48 object-cover" data-alt="close up of diverse group of professional team members working together around a table with laptops in a bright office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT5SSzYugmhY4qNwLZ5-pFtEWPPqRbSLspdS-g72Sx_t99Pd6vqUYreMeMiSFazTzrfZ1JAvchEQ_Iw8fbZ3ZnBxftm7gKSckPn2g34H_i0SDIwN9inkD-9OAT0dSGwVzoSdJf-Z4zVe1wkoap1JEI2_rzi17P2cKuN-o2QAihoq6W65qRnqoBrTvL6p9FH27B9eXl7nQPMHLO0i4e5m65msqoEU07yr94TLRTd_rmeqsj5hX-5hkWWzV19aT1eeE4PkHQnVLELRmp"/>
+<div class="p-6">
+<p class="text-[10px] font-bold text-primary mb-2 uppercase tracking-widest">Workplace Trends</p>
+<h3 class="font-headline font-bold text-on-secondary-fixed text-lg mb-3 leading-tight">The Rise of Hyper-Personalized Benefits</h3>
+<p class="text-on-secondary-container text-sm line-clamp-2">How data is helping companies offer benefits that actually matter to individual employees.</p>
+</div>
+</article>
+<article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-outline-variant/10">
+<img class="w-full h-48 object-cover" data-alt="professional woman using a tablet in a modern sunlit workspace with clean architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA57qGI-9Fbp48yfxBcfYdF_c-Xjxa-RzJwDlb4JSS1CkLfY69ROurfbGbUdv0BZPq2in2Xdz0OoXxcDppftlmYu7VMlUnpcy-zsihO6Psfser8AZDHKaqNhCtEdjwpc1NwwMz5f6kU_JhITPXQOmAbgzUzlvADx4__gL6_B2QzgAb5-Sw3Guu3kNb74uTM0ndU0AqzNiFpJqdZTbl9zdVYkgokxKyk3YfZfVWG4jwFoXf9YYTJz4LodC2qLGiWlKBb2OdhhaDoIb0m"/>
+<div class="p-6">
+<p class="text-[10px] font-bold text-primary mb-2 uppercase tracking-widest">Remote Work</p>
+<h3 class="font-headline font-bold text-on-secondary-fixed text-lg mb-3 leading-tight">Global Compliance in the Age of Digital Nomads</h3>
+<p class="text-on-secondary-container text-sm line-clamp-2">Navigating international tax laws when your team is spread across 50 countries.</p>
+</div>
+</article>
+<article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-outline-variant/10">
+<img class="w-full h-48 object-cover" data-alt="abstract data visualization of human connection points in shades of teal and navy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuTFRJPT2JDH0XANHU1rAYmlcrrT9C2i_mXqy7pWFIcAnbp_QXT008LDydO2O8nMIeKFALivpekXWr3PUx7rIy5EK4kx5uGLrYELwH1UA1zCvNIfL0_UEowUcQ2WEbFqpYod_WkRik_W3ralMJvGP_fFa7G4C5sVFk38foI-vgrB2U12FFrCXrDVyb-sGTHdqf6RZ21zUAPUk4umHtxe_UqzH0XVoxv7c8hzMSP2e8kiifW06AZqV6pzIFDeJOdInl-mO-LLboFlRh"/>
+<div class="p-6">
+<p class="text-[10px] font-bold text-primary mb-2 uppercase tracking-widest">HR Technology</p>
+<h3 class="font-headline font-bold text-on-secondary-fixed text-lg mb-3 leading-tight">AI in Hiring: Fairness vs. Efficiency</h3>
+<p class="text-on-secondary-container text-sm line-clamp-2">Ensuring your automated recruitment pipelines remain unbiased and human-centric.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full border-t border-slate-200 dark:border-slate-800">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div>
+<div class="text-xl font-bold text-slate-900 dark:text-white mb-6">HRabhiyaan</div>
+<p class="text-slate-500 text-sm mb-6 max-w-xs">Elevating HR operations through design, data, and human intelligence.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer" data-icon="public">public</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-secondary-fixed mb-4">Product</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Features</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Solutions</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-secondary-fixed mb-4">Resources</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Blog</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Guides</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-secondary-fixed mb-4">Legal</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 text-sm hover:text-teal-600 underline-offset-4 transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-6 border-t border-slate-200/50">
+<p class="text-slate-500 text-xs text-center">© 2024 HRabhiyaan. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
