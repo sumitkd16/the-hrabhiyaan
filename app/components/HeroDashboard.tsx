@@ -153,7 +153,7 @@ export default function HeroDashboard() {
                 style={{ filter: 'blur(10px)' }}
               />
               <Image 
-                src="/no-back-logo.png" 
+                src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512015/LOGO_HR_ABHIYAN_PNG_01_04_2026_FULL_LOGO_6_WITH_PATCH_k9v1gf.png" 
                 alt="HRMS Logo" 
                 width={40} 
                 height={40} 

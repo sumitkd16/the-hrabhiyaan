@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { FaApple, FaGooglePlay, FaStar } from 'react-icons/fa';
-import HeroDashboard from './components/HeroDashboard';
+import HeroVideo from './components/HeroVideo';
 import Image from 'next/image';
 
 // Lazy load the heavy dashboard component
@@ -29,32 +29,32 @@ const widgetData: Record<string, { name: string; desc: string; image: string }> 
   dashboard: {
     name: 'Smart Dashboard',
     desc: 'Real-time analytics with trend forecasting',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
+    image: 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776510308/SMART_DASHBOARD_14_04_2026_1_chhmjq.jpg'
   },
   talent: {
     name: 'Talent Acquisition',
     desc: 'AI-powered candidate ranking',
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80'
+    image: 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776510306/TALENT_ACQUISITIONS_14_04_2026_1_zcqdpa.jpg'
   },
   workforce: {
     name: 'Workforce Management',
     desc: 'Smart scheduling & attendance',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
+    image: 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776510292/WORKFORCE_MANAGEMENT_14_04_2026_0.1_nz0sxp.jpg'
   },
   performance: {
     name: 'Performance & Growth',
     desc: '360° feedback & OKR tracking',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'
+    image: 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776510290/Performance_Growth_14_04_2026_1_tfznsz.jpg'
   },
   finance: {
     name: 'Finance & Admin',
     desc: 'Global payroll & compliance',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80'
+    image: 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776510291/Finance_Admin_14_04_2026_1_hmjb5w.jpg'
   },
   operations: {
     name: 'HR Operations',
     desc: 'Policy & document hub',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80'
+    image: 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776510308/HR_Operations_14_04_2026_1_jrmwwr.jpg'
   }
 };
 
@@ -90,6 +90,25 @@ export default function Home() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
   const [hasBeenViewed, setHasBeenViewed] = useState(false);
+  const [showMapCard, setShowMapCard] = useState(false);
+  const mapVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Geo map video card - show when geotag appears (3-4 sec), hide when geotag disappears (10 sec)
+  useEffect(() => {
+    const video = mapVideoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= 3 && video.currentTime < 10 && !showMapCard) {
+        setShowMapCard(true);
+      } else if ((video.currentTime < 3 || video.currentTime >= 10) && showMapCard) {
+        setShowMapCard(false);
+      }
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
+  }, [showMapCard]);
 
   // Auto-play logic
   useEffect(() => {
@@ -170,7 +189,7 @@ export default function Home() {
       animate={{ opacity: 1, x: 0, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <HeroDashboard />
+      <HeroVideo />
     </motion.div>
   </div>
 </section>
@@ -218,22 +237,24 @@ export default function Home() {
                   <span className="w-3 h-3 rounded-full bg-green-400"></span>
                 </div>
               </div>
-              <div className="overflow-hidden">
-                <Image 
-  className="w-full h-64 md:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700" 
-  alt="digital map interface showing user location pings" 
-  src="/map image.png"
-  width={800}
-  height={400}
-/>
-                {/* <img className="w-full h-64 md:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700" alt="digital map interface showing user location pings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIES03DfUsHurM7C0im1slegRdfymBYEnTTwXSQnBkZ2erVv9-cVOQRXwRprOi02JvUBVx3G4UdPHroOa0_ty_isYD0_QKbfQ5iPXtdhrAgwJzN_wz5gLhT05vS8IaWay3julWVqRGWTsj-jyyJZyrRcfXfkocAA0yDTS0T-uueEAySIQ4IBrMgUeP-WwaNJNd28yR5wm4Abu8A2ecl7i2rGwpXiPDCDtKfF-TXkko_2Ebwo0wtEuYF4T0Zs4VvPiwSJQW4MroB9vo" /> */}
+<div className="overflow-hidden">
+                <video 
+                  ref={mapVideoRef}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  src="https://res.cloudinary.com/da00qz5zp/video/upload/v1776512576/HRMS_LOCATION_VIDEO_17_04_2026_rtoteq.mp4"
+                />
               </div>
+              <AnimatePresence>
+                {showMapCard && (
               <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-auto"
+                className="absolute bottom-16 right-12 md:bottom-37 md:right-51"
                 initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", delay: 0.3 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", delay: 0.1 }}
               >
                 <div className="glass-effect bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-lg flex items-center gap-3 hover:-translate-y-1 transition-all cursor-pointer overflow-hidden">
                   <div className="w-10 h-10 rounded-full bg-primary flex shrink-0 items-center justify-center text-white">
@@ -245,6 +266,8 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
           <motion.div className="order-1 lg:order-2" {...fadeInUp}>
@@ -282,9 +305,9 @@ export default function Home() {
             <p className="text-on-secondary-container max-w-2xl mx-auto">Explore our integrated modules. Click any feature to learn more.</p>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row gap-6">
+          <div className="flex flex-col lg:flex-row gap-6 lg:h-[600px]">
             {/* LEFT SIDE - All 6 Widgets Stacked */}
-            <div className="lg:w-1/3 flex flex-col gap-3" style={{ height: '600px' }}>
+            <div className="lg:w-1/3 flex flex-col gap-3 lg:h-[600px]">
               {widgets.map((widget, index) => (
                 <motion.div 
                   key={widget.id}
@@ -341,11 +364,10 @@ export default function Home() {
               ))}
             </div>
 
-            {/* RIGHT SIDE - FULL SCREEN PREVIEW (No header, no dots, pure image) */}
-            <div className="lg:w-2/3">
+{/* RIGHT SIDE - FULL SCREEN PREVIEW (No header, no dots, pure image) */}
+            <div className="lg:w-2/3 lg:h-full">
               <motion.div 
-                className="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900"
-                style={{ height: '600px' }}
+                className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full rounded-2xl overflow-hidden shadow-2xl bg-slate-900"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -362,13 +384,13 @@ export default function Home() {
                   >
                     {/* Pure full-screen image - no overlays, no headers */}
                     <Image 
-  src={widgetData[activeWidget].image} 
-  alt={widgetData[activeWidget].name}
-  fill
-  className="object-contain bg-slate-950"
-  sizes="(max-width: 1024px) 100vw, 66vw"
-  priority={activeWidget === 'dashboard'}
-/>
+                      src={widgetData[activeWidget].image} 
+                      alt={widgetData[activeWidget].name}
+                      fill
+                      className="object-cover bg-slate-950"
+                      sizes="(max-width: 1024px) 100vw, 66vw"
+                      priority={activeWidget === 'dashboard'}
+                    />
                   </motion.div>
                 </AnimatePresence>
 
@@ -482,7 +504,7 @@ export default function Home() {
                 <img 
                   className="w-full h-auto object-cover" 
                   alt="network connectivity visualization" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_6FZw-TylKDnhBmyXBiFuMyNuXwYhEvVOBXFBKzSD8nNO7_OMMHpg2tLEydRa_EzORg6v623sMfNh8slAETRnYHtFzuMsfFuyuW9pTQcJrUDQUg_hHE73r2jkgKygHf4JFcyKkaWotmxLgz68P5yh7beRTBPD_L22-QF0P6GBxvKSbzb-X3rVW-036iPs0spOoFIbR7NDuOiWZzeKpnzeKUC38MRae_SQofD4MeYnABLk-TM4pdmTI3ZXOcga0AKtQjaQKnyx0qIp" 
+                  src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512064/Works_with_the_Tools_pzklbp.png"
                 />
                 {/* Subtle overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/20 via-transparent to-blue-900/10 pointer-events-none" />
@@ -546,7 +568,7 @@ export default function Home() {
       >
         {/* Primary Phone */}
         <div className="relative z-10 w-56 h-[450px] md:w-64 md:h-[500px] bg-slate-800 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white/15 shadow-2xl shadow-black/20 overflow-hidden hover:-translate-y-4 hover:shadow-black/40 transition-all duration-500 cursor-pointer">
-          <img className="w-full h-full object-cover" alt="mobile app screen showing employee profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC71qXpkj2Wl-0JFmIMGsiOu_yHXJnQWrSFKU3XJDlMlIQ-w2EyrsR76RhxGR3eMWG5m_X7V6umDJmpmRN-tjgZVIugGDWEclYn5ebaTbtlHnu9_PYMjnh0fRbH7Bpd69bjy3-YtTEOjRMTdBm5cP1lkNApSYIebJRkPtrNsqwU47U0FrHJBWvxYzEVs2uj07i7vJBnwJdOD3Jz0fHDQvGtquO5HV1Gqx7cwQ1TPro80jJZgpCS1V0d7sgp4sPlZlS0zWwITAOAiPDr" />
+          <img className="w-full h-full object-cover" alt="mobile app screen showing employee profile" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512323/HR_in_Your_Pocket_fyyvc7.png" />
         </div>
         
         {/* Secondary Phone - WHITE border instead of slate */}
@@ -556,7 +578,7 @@ export default function Home() {
           whileInView={{ rotate: 6 }}
           viewport={{ once: true }}
         >
-          <img className="w-full h-full object-cover" alt="mobile app screen showing payroll history" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKIbTqKtmCapMgDHtG0BdSPRpuUjsgesuhSs8Sba-EaRd632zrWHcYg8yAlDD_vhQhsFnuO6g_lWKZ1j3qZ6UXZha3a82Ybp9Tqkj3i3oHQbNJaTZfe_P3Mz2kapHpkRnDwiCP9_VBPtiqMkkl3rgWxctKyW14ox9DI2o2dUCBbY-573bn_VycW0IYqxEwreLLXMdXRjFe7XzluQ_zpbtWTj80Ni1Nd2QFhoVOEZxG2RRP05Si_jCGSxYg3PYWM620XQqBpAy3Ih_w" />
+          <img className="w-full h-full object-cover" alt="mobile app screen showing payroll history" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512322/HR_in_Your_Pocket2_xapgel.png" />
         </motion.div>
       </motion.div>
     </div>
@@ -700,7 +722,7 @@ export default function Home() {
           >
             <motion.article variants={childVariant} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/10 group cursor-pointer flex flex-col">
               <div className="overflow-hidden">
-                <img className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="diverse group of professional team members working" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT5SSzYugmhY4qNwLZ5-pFtEWPPqRbSLspdS-g72Sx_t99Pd6vqUYreMeMiSFazTzrfZ1JAvchEQ_Iw8fbZ3ZnBxftm7gKSckPn2g34H_i0SDIwN9inkD-9OAT0dSGwVzoSdJf-Z4zVe1wkoap1JEI2_rzi17P2cKuN-o2QAihoq6W65qRnqoBrTvL6p9FH27B9eXl7nQPMHLO0i4e5m65msqoEU07yr94TLRTd_rmeqsj5hX-5hkWWzV19aT1eeE4PkHQnVLELRmp" />
+                <img className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="diverse group of professional team members working" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776511992/Workplace_Trends_iiwggu.png" />
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-widest">Workplace Trends</p>
@@ -710,7 +732,7 @@ export default function Home() {
             </motion.article>
             <motion.article variants={childVariant} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/10 group cursor-pointer flex flex-col">
               <div className="overflow-hidden">
-                <img className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="professional woman using a tablet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA57qGI-9Fbp48yfxBcfYdF_c-Xjxa-RzJwDlb4JSS1CkLfY69ROurfbGbUdv0BZPq2in2Xdz0OoXxcDppftlmYu7VMlUnpcy-zsihO6Psfser8AZDHKaqNhCtEdjwpc1NwwMz5f6kU_JhITPXQOmAbgzUzlvADx4__gL6_B2QzgAb5-Sw3Guu3kNb74uTM0ndU0AqzNiFpJqdZTbl9zdVYkgokxKyk3YfZfVWG4jwFoXf9YYTJz4LodC2qLGiWlKBb2OdhhaDoIb0m" />
+                <img className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="professional woman using a tablet" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776511992/Remote_Work_lbxttp.png" />
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-widest">Remote Work</p>
@@ -720,7 +742,7 @@ export default function Home() {
             </motion.article>
             <motion.article variants={childVariant} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/10 group cursor-pointer flex flex-col">
               <div className="overflow-hidden">
-                <img className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="abstract data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuTFRJPT2JDH0XANHU1rAYmlcrrT9C2i_mXqy7pWFIcAnbp_QXT008LDydO2O8nMIeKFALivpekXWr3PUx7rIy5EK4kx5uGLrYELwH1UA1zCvNIfL0_UEowUcQ2WEbFqpYod_WkRik_W3ralMJvGP_fFa7G4C5sVFk38foI-vgrB2U12FFrCXrDVyb-sGTHdqf6RZ21zUAPUk4umHtxe_UqzH0XVoxv7c8hzMSP2e8kiifW06AZqV6pzIFDeJOdInl-mO-LLboFlRh" />
+                <img className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="abstract data visualization" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512002/HR_Technology_rtjztl.png" />
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-widest">HR Technology</p>
