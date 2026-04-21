@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { FaApple, FaGooglePlay, FaStar } from 'react-icons/fa';
+import Link from 'next/link';
 import HeroVideo from './components/HeroVideo';
 import Image from 'next/image';
 
@@ -120,7 +121,7 @@ export default function Home() {
         const nextIndex = (currentIndex + 1) % widgets.length;
         return widgets[nextIndex].id;
       });
-    }, 4000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, hasBeenViewed]);
@@ -143,7 +144,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-    // Navigate widgets
+  // Navigate widgets
   const navigateWidget = (direction: number) => {
     const currentIndex = widgets.findIndex(w => w.id === activeWidget);
     let newIndex = currentIndex + direction;
@@ -155,77 +156,101 @@ export default function Home() {
 
   return (
     <div className="w-full">
-    {/* Hero Section */}
-<section className="relative overflow-hidden pt-16 pb-16 md:pt-24 md:pb-24 px-4 sm:px-6 md:px-8">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-    
-    {/* LEFT SIDE - Text Content (first on mobile) */}
-    <motion.div 
-      className="z-10"
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-    >
-      <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] text-on-secondary-fixed leading-[1.2] md:leading-[1.1] tight-headline mb-4 md:mb-6 font-bold">
-        The Complete HR Ecosystem for <span className="text-blue-600">Modern Teams</span>
-      </h1>
-      <p className="text-on-secondary-container text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-xl leading-relaxed">
-        Streamline your entire employee lifecycle with AI-driven insights, geospatial attendance, and seamless payroll. Built for scale, designed for people.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-3">
-        <button className="bg-primary text-on-primary px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-primary-container hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base">
-          Book a Free Demo
-        </button>
-        <button className="bg-secondary-container text-on-secondary-fixed px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold hover:bg-surface-container-high hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base">
-          Explore Features
-        </button>
-      </div>
-    </motion.div>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-8 pb-12 md:pt-12 md:pb-16 px-4 sm:px-6 md:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
 
-    {/* RIGHT SIDE - Dashboard (second on mobile) */}
-    <motion.div 
-      className="relative h-full"
-      initial={{ opacity: 0, x: 50, scale: 0.95 }}
-      animate={{ opacity: 1, x: 0, scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-    >
-      <HeroVideo />
-    </motion.div>
-  </div>
-</section>
+          {/* LEFT SIDE - Text Content (first on mobile) */}
+          <motion.div
+            className="z-10"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] text-on-secondary-fixed leading-[1.2] md:leading-[1.1] tight-headline mb-4 md:mb-6 font-bold">
+              The Complete HR Ecosystem for <span className="text-blue-600">Modern Teams</span>
+            </h1>
+            <p className="text-on-secondary-container text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-xl leading-relaxed">
+              Streamline your entire employee lifecycle with AI-driven insights, geospatial attendance, and seamless payroll. Built for scale, designed for people.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/demo" className="bg-primary text-on-primary px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-primary-container hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base">
+                Book a Free Demo
+              </Link>
+              <a href="#features" className="bg-secondary-container text-on-secondary-fixed px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold hover:bg-surface-container-high hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base cursor-pointer">
+                Explore Features
+              </a>
+            </div>
+          </motion.div>
+
+          {/* RIGHT SIDE - Dashboard (second on mobile) */}
+          <motion.div
+            className="relative h-full"
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <HeroVideo />
+          </motion.div>
+        </div>
+      </section>
 
       {/* Social Proof */}
       <section className="py-12 bg-surface-container-low overflow-hidden">
         <motion.div className="max-w-7xl mx-auto px-6 md:px-8" {...fadeInUp}>
           <p className="text-center text-on-secondary-container font-semibold uppercase tracking-widest text-xs mb-10">Trusted by Forward-Thinking Enterprise Teams</p>
-          <motion.div
-            className="flex flex-wrap justify-center items-center gap-8 md:gap-24 opacity-100"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {[
-              "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg",
-              "https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg",
-              "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-              "https://upload.wikimedia.org/wikipedia/commons/b/b9/Slack_Technologies_Logo.svg",
-              "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg"
-            ].map((src, i) => (
-              <motion.img
-                key={i}
-                variants={childVariant}
-                className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-all duration-300 transform hover:scale-110 cursor-pointer object-contain"
-                alt="corporate logo"
-                src={src}
-              />
-            ))}
-          </motion.div>
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex items-center gap-12 md:gap-16"
+              animate={{ x: [0, -1920] }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 35,
+                  ease: "linear"
+                }
+              }}
+            >
+              {[
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686344/Tejas_Pharma_nkiaeb.png",
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686344/Job_Karoge_uylynp.png",
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686344/Tracit_fuuivq.png",
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776693003/BSSL_LOGO_20_04_2026_ohp59h.png",
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686345/Spaarsh_pegfzh.png",
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686346/SEhat_HUB_LOGOTM_awlsaf.png",
+                "https://res.cloudinary.com/da00qz5zp/image/upload/v1776747209/ChatGPT_Image_Apr_20_2026_at_07_38_48_PM_scbdaa.png"
+              ].map((src, i) => (
+                <img
+                  key={i}
+                  className="h-28 md:h-36 lg:h-40 opacity-100 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer object-contain shrink-0 grayscale-0 brightness-100"
+                  alt="client logo"
+                  src={src}
+                />
+              ))}
+              {[...Array(7)].map((_, i) => (
+                <img
+                  key={`dup-${i}`}
+                  className="h-28 md:h-36 lg:h-40 opacity-100 object-contain shrink-0 grayscale-0 brightness-100"
+                  alt=""
+                  src={[
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686344/Tejas_Pharma_nkiaeb.png",
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686344/Job_Karoge_uylynp.png",
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686344/Tracit_fuuivq.png",
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776693003/BSSL_LOGO_20_04_2026_ohp59h.png",
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686345/Spaarsh_pegfzh.png",
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776686346/SEhat_HUB_LOGOTM_awlsaf.png",
+                    "https://res.cloudinary.com/da00qz5zp/image/upload/v1776747209/ChatGPT_Image_Apr_20_2026_at_07_38_48_PM_scbdaa.png"
+                  ][i]}
+                />
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
       {/* USP (Geospatial Intelligence) */}
-      <section className="py-20 md:py-32 px-6 md:px-8 bg-surface">
+      <section id="features" className="py-20 md:py-32 px-6 md:px-8 bg-surface">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div className="order-2 lg:order-1 relative" {...fadeInUp}>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/20 group">
@@ -237,8 +262,8 @@ export default function Home() {
                   <span className="w-3 h-3 rounded-full bg-green-400"></span>
                 </div>
               </div>
-<div className="overflow-hidden">
-                <video 
+              <div className="overflow-hidden">
+                <video
                   ref={mapVideoRef}
                   className="w-full h-full object-cover"
                   autoPlay
@@ -250,22 +275,22 @@ export default function Home() {
               </div>
               <AnimatePresence>
                 {showMapCard && (
-              <motion.div
-                className="absolute bottom-16 right-12 md:bottom-37 md:right-51"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", delay: 0.1 }}
-              >
-                <div className="glass-effect bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-lg flex items-center gap-3 hover:-translate-y-1 transition-all cursor-pointer overflow-hidden">
-                  <div className="w-10 h-10 rounded-full bg-primary flex shrink-0 items-center justify-center text-white">
-                    <span className="material-symbols-outlined animate-pulse">person_pin_circle</span>
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm md:text-xs font-bold text-on-secondary-fixed truncate">Marcus Thorne</p>
-                    <p className="text-[10px] text-primary font-medium truncate">Checked-in at HQ • 09:01 AM</p>
-                  </div>
-                </div>
-              </motion.div>
+                  <motion.div
+                    className="absolute bottom-16 right-12 md:bottom-37 md:right-51"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", delay: 0.1 }}
+                  >
+                    <div className="glass-effect bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-lg flex items-center gap-3 hover:-translate-y-1 transition-all cursor-pointer overflow-hidden">
+                      <div className="w-10 h-10 rounded-full bg-primary flex shrink-0 items-center justify-center text-white">
+                        <span className="material-symbols-outlined animate-pulse">person_pin_circle</span>
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm md:text-xs font-bold text-on-secondary-fixed truncate">Marcus Thorne</p>
+                        <p className="text-[10px] text-primary font-medium truncate">Checked-in at HQ • 09:01 AM</p>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
@@ -309,17 +334,16 @@ export default function Home() {
             {/* LEFT SIDE - All 6 Widgets Stacked */}
             <div className="lg:w-1/3 flex flex-col gap-3 lg:h-[600px]">
               {widgets.map((widget, index) => (
-                <motion.div 
+                <motion.div
                   key={widget.id}
                   onClick={() => {
                     setActiveWidget(widget.id);
                     setIsAutoPlaying(false);
                   }}
-                  className={`relative p-5 rounded-xl cursor-pointer overflow-hidden transition-all duration-300 flex-1 flex flex-col justify-center group ${
-                    activeWidget === widget.id 
-                      ? 'bg-slate-900 border-l-4 border-blue-600 shadow-xl' 
-                      : 'bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md'
-                  }`}
+                  className={`relative p-5 rounded-xl cursor-pointer overflow-hidden transition-all duration-300 flex-1 flex flex-col justify-center group ${activeWidget === widget.id
+                    ? 'bg-slate-900 border-l-4 border-blue-600 shadow-xl'
+                    : 'bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md'
+                    }`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -328,33 +352,29 @@ export default function Home() {
                 >
                   <div className="flex items-center gap-4">
                     {/* Icon - PERMANENTLY BLUE */}
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                      activeWidget === widget.id 
-                        ? 'bg-blue-600 text-white scale-110' 
-                        : 'bg-blue-50 text-blue-600'
-                    }`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${activeWidget === widget.id
+                      ? 'bg-blue-600 text-white scale-110'
+                      : 'bg-blue-50 text-blue-600'
+                      }`}>
                       <span className="material-symbols-outlined text-xl">{widget.icon}</span>
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-bold text-base mb-1 truncate transition-colors ${
-                        activeWidget === widget.id ? 'text-white' : 'text-slate-800'
-                      }`}>
+                      <h3 className={`font-bold text-base mb-1 truncate transition-colors ${activeWidget === widget.id ? 'text-white' : 'text-slate-800'
+                        }`}>
                         {widget.name}
                       </h3>
-                      <p className={`text-xs line-clamp-2 leading-relaxed ${
-                        activeWidget === widget.id ? 'text-slate-400' : 'text-slate-500'
-                      }`}>
+                      <p className={`text-xs line-clamp-2 leading-relaxed ${activeWidget === widget.id ? 'text-slate-400' : 'text-slate-500'
+                        }`}>
                         {widget.desc}
                       </p>
                     </div>
 
                     {/* Arrow - INVERTED DIRECTION */}
-                    <span className={`material-symbols-outlined text-lg transition-all ${
-                      activeWidget === widget.id 
-                        ? 'text-blue-400'  // Points right (default)
-                        : 'text-slate-300 rotate-90'  // Points down
-                    }`}>
+                    <span className={`material-symbols-outlined text-lg transition-all ${activeWidget === widget.id
+                      ? 'text-blue-400'  // Points right (default)
+                      : 'text-slate-300 rotate-90'  // Points down
+                      }`}>
                       chevron_right
                     </span>
                   </div>
@@ -364,9 +384,9 @@ export default function Home() {
               ))}
             </div>
 
-{/* RIGHT SIDE - FULL SCREEN PREVIEW (No header, no dots, pure image) */}
+            {/* RIGHT SIDE - FULL SCREEN PREVIEW (No header, no dots, pure image) */}
             <div className="lg:w-2/3 lg:h-full">
-              <motion.div 
+              <motion.div
                 className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full rounded-2xl overflow-hidden shadow-2xl bg-slate-900"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -383,8 +403,8 @@ export default function Home() {
                     transition={{ duration: 0.4 }}
                   >
                     {/* Pure full-screen image - no overlays, no headers */}
-                    <Image 
-                      src={widgetData[activeWidget].image} 
+                    <Image
+                      src={widgetData[activeWidget].image}
                       alt={widgetData[activeWidget].name}
                       fill
                       className="object-cover bg-slate-950"
@@ -395,11 +415,11 @@ export default function Home() {
                 </AnimatePresence>
 
                 {/* Invisible click areas to navigate */}
-                <button 
+                <button
                   onClick={() => navigateWidget(-1)}
                   className="absolute left-0 top-0 bottom-0 w-16 opacity-0 hover:opacity-10 bg-gradient-to-r from-black/50 to-transparent transition-opacity"
                 />
-                <button 
+                <button
                   onClick={() => navigateWidget(1)}
                   className="absolute right-0 top-0 bottom-0 w-16 opacity-0 hover:opacity-10 bg-gradient-to-l from-black/50 to-transparent transition-opacity"
                 />
@@ -476,22 +496,22 @@ export default function Home() {
                   { name: 'ChatGPT', src: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg', bg: 'bg-emerald-50' },
                   { name: 'Telegram', src: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg', bg: 'bg-sky-50' }
                 ].map((app, i) => (
-                  <motion.div 
-                    key={i} 
-                    variants={childVariant} 
+                  <motion.div
+                    key={i}
+                    variants={childVariant}
                     className={`aspect-square w-full max-w-[100px] md:max-w-[120px] ${app.bg} rounded-2xl flex items-center justify-center hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer border border-slate-200 p-4 md:p-6`}
                     whileHover={{ scale: 1.08 }}
                   >
-                    <img 
-                      className="w-full h-full object-contain max-h-12 md:max-h-14" 
-                      alt={app.name} 
-                      src={app.src} 
+                    <img
+                      className="w-full h-full object-contain max-h-12 md:max-h-14"
+                      alt={app.name}
+                      src={app.src}
                     />
                   </motion.div>
                 ))}
               </motion.div>
             </motion.div>
-            
+
             {/* Image on Left Side */}
             <motion.div
               className="flex-1 w-full"
@@ -501,9 +521,9 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
-                <img 
-                  className="w-full h-auto object-cover" 
-                  alt="network connectivity visualization" 
+                <img
+                  className="w-full h-auto object-cover"
+                  alt="network connectivity visualization"
                   src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512064/Works_with_the_Tools_pzklbp.png"
                 />
                 {/* Subtle overlay gradient */}
@@ -515,75 +535,75 @@ export default function Home() {
       </section>
 
       {/* Mobile App Promo */}
-<section className="py-20 md:py-24 px-6 md:px-8 overflow-hidden bg-surface">
-  <motion.div
-    initial={{ opacity: 0, scale: 0.98 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.6 }}
-    className="max-w-7xl mx-auto bg-primary text-white rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl shadow-primary/20"
-  >
-    <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
-      {/* Left Content */}
-      <motion.div 
-        className="lg:w-1/2 w-full"
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-white tight-headline mb-6 leading-tight">
-          HR in Your Pocket
-        </h2>
-        <p className="text-white/80 text-base md:text-lg mb-10 leading-relaxed">
-          The full power of HRabhiyaan on mobile. Quick check-ins, leave requests, payslip viewing, and manager approvals—all from a refined mobile experience.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          {/* App Store */}
-          <div className="group bg-white text-primary px-6 py-3.5 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
-            <FaApple className="text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110" />
-            <div>
-              <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold leading-none mb-0.5 group-hover:text-blue-100 transition-colors">Download on the</p>
-              <p className="text-sm font-bold leading-tight">App Store</p>
-            </div>
-          </div>
-          {/* Google Play */}
-          <div className="group bg-white text-primary px-6 py-3.5 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
-            <FaGooglePlay className="text-xl shrink-0 transition-transform duration-300 group-hover:scale-110" />
-            <div>
-              <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold leading-none mb-0.5 group-hover:text-blue-100 transition-colors">Get it on</p>
-              <p className="text-sm font-bold leading-tight">Google Play</p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right Phones */}
-      <motion.div
-        className="lg:w-1/2 relative flex justify-center mt-8 lg:mt-0"
-        initial={{ opacity: 0, y: 0 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, type: "spring" }}
-      >
-        {/* Primary Phone */}
-        <div className="relative z-10 w-56 h-[450px] md:w-64 md:h-[500px] bg-slate-800 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white/15 shadow-2xl shadow-black/20 overflow-hidden hover:-translate-y-4 hover:shadow-black/40 transition-all duration-500 cursor-pointer">
-          <img className="w-full h-full object-cover" alt="mobile app screen showing employee profile" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512323/HR_in_Your_Pocket_fyyvc7.png" />
-        </div>
-        
-        {/* Secondary Phone - WHITE border instead of slate */}
+      <section className="py-20 md:py-24 px-6 md:px-8 overflow-hidden bg-surface">
         <motion.div
-          className="absolute -right-4 md:-right-10 top-10 md:top-20 z-0 w-56 h-[450px] md:w-64 md:h-[500px] bg-white rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white shadow-2xl overflow-hidden opacity-30 transform rotate-6 hidden lg:block hover:opacity-80 hover:rotate-12 transition-all duration-500 cursor-pointer"
-          initial={{ rotate: 0 }}
-          whileInView={{ rotate: 6 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto bg-primary text-white rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl shadow-primary/20"
         >
-          <img className="w-full h-full object-cover" alt="mobile app screen showing payroll history" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512322/HR_in_Your_Pocket2_xapgel.png" />
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+            {/* Left Content */}
+            <motion.div
+              className="lg:w-1/2 w-full"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-white tight-headline mb-6 leading-tight">
+                HR in Your Pocket
+              </h2>
+              <p className="text-white/80 text-base md:text-lg mb-10 leading-relaxed">
+                The full power of HRabhiyaan on mobile. Quick check-ins, leave requests, payslip viewing, and manager approvals—all from a refined mobile experience.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                {/* App Store */}
+                <Link href="#" className="group bg-white text-primary px-6 py-3.5 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
+                  <FaApple className="text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold leading-none mb-0.5 group-hover:text-blue-100 transition-colors">Download on the</p>
+                    <p className="text-sm font-bold leading-tight">App Store</p>
+                  </div>
+                </Link>
+                {/* Google Play */}
+                <Link href={process.env.NEXT_PUBLIC_APP_DOWNLOAD_URL || '#'} target="_blank" className="group bg-white text-primary px-6 py-3.5 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
+                  <FaGooglePlay className="text-xl shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold leading-none mb-0.5 group-hover:text-blue-100 transition-colors">Get it on</p>
+                    <p className="text-sm font-bold leading-tight">Google Play</p>
+                  </div>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Phones */}
+            <motion.div
+              className="lg:w-1/2 relative flex justify-center mt-8 lg:mt-0"
+              initial={{ opacity: 0, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, type: "spring" }}
+            >
+              {/* Primary Phone */}
+              <div className="relative z-10 w-56 h-[450px] md:w-64 md:h-[500px] bg-slate-800 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white/15 shadow-2xl shadow-black/20 overflow-hidden hover:-translate-y-4 hover:shadow-black/40 transition-all duration-500 cursor-pointer">
+                <img className="w-full h-full object-cover" alt="mobile app screen showing employee profile" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512323/HR_in_Your_Pocket_fyyvc7.png" />
+              </div>
+
+              {/* Secondary Phone - WHITE border instead of slate */}
+              <motion.div
+                className="absolute -right-4 md:-right-10 top-10 md:top-20 z-0 w-56 h-[450px] md:w-64 md:h-[500px] bg-white rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-white shadow-2xl overflow-hidden opacity-30 transform rotate-6 hidden lg:block hover:opacity-80 hover:rotate-12 transition-all duration-500 cursor-pointer"
+                initial={{ rotate: 0 }}
+                whileInView={{ rotate: 6 }}
+                viewport={{ once: true }}
+              >
+                <img className="w-full h-full object-cover" alt="mobile app screen showing payroll history" src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776512322/HR_in_Your_Pocket2_xapgel.png" />
+              </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
-      </motion.div>
-    </div>
-  </motion.div>
-</section>
+      </section>
 
       {/* Pricing Table */}
       <section className="py-20 md:py-32 px-6 md:px-8 bg-surface">
@@ -593,58 +613,113 @@ export default function Home() {
             <p className="text-on-secondary-container">No hidden fees. Transparent pricing that grows with your team.</p>
           </motion.div>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div variants={childVariant} className="bg-surface-container-lowest p-8 md:p-10 rounded-2xl border border-outline-variant/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
-              <h3 className="font-headline font-bold text-xl text-on-secondary-fixed mb-2">Starter</h3>
-              <p className="text-on-secondary-container text-sm mb-6">For small teams getting organized.</p>
-              <div className="mb-8">
-                <span className="text-4xl font-extrabold text-on-secondary-fixed">$49</span>
-                <span className="text-on-secondary-container">/month</span>
+            {/* Silver Plan */}
+            <motion.div variants={childVariant} className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border-2 border-teal-600 shadow-lg shadow-teal-600/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col h-full">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-xs font-bold mb-4 w-fit">
+                <span className="material-symbols-outlined text-sm">workspace_premium</span>
+                Silver
               </div>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Up to 20 employees</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Basic attendance</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Core HR profiles</li>
-                <li className="flex items-start gap-3 text-sm text-slate-400 line-through"><span className="material-symbols-outlined text-slate-300 text-lg shrink-0 mt-0.5">check_circle</span> Payroll automation</li>
+              <p className="text-on-secondary-container text-sm mb-4">For small teams getting started</p>
+              <div className="mb-3 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-on-secondary-fixed blur-sm select-none">₹X,XXX</span>
+                <span className="text-base text-on-secondary-container">/month</span>
+              </div>
+              <p className="text-sm font-semibold text-teal-600 mb-6">Up to 25 Employees</p>
+              <ul className="space-y-3 mb-6 flex-1">
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Employee Database & Digital Records</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Attendance Management</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Leave & Holiday Management</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Basic Payroll (PF, ESI, TDS)</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Employee Self-Service Portal</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Onboarding & Exit Management</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Organization Structure Setup</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-teal-600 text-base shrink-0">check_circle</span> Mobile App Access</li>
               </ul>
-              <button className="w-full py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">Get Started</button>
+              <Link href="/login" className="w-full py-3 rounded-lg bg-teal-600 text-white font-bold shadow-lg shadow-teal-600/30 hover:bg-teal-700 hover:scale-[1.02] transition-all text-center block">Free Trial</Link>
             </motion.div>
 
-            <motion.div variants={childVariant} className="bg-surface-container-lowest p-8 md:p-10 rounded-2xl border-2 border-blue-600 shadow-2xl shadow-blue-600/10 relative flex flex-col transform md:-translate-y-4 hover:-translate-y-6 hover:shadow-blue-600/20 transition-all duration-300 mt-4 sm:mt-0">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest animate-pulse whitespace-nowrap">Most Popular</div>
-              <h3 className="font-headline font-bold text-xl text-on-secondary-fixed mb-2">Growth</h3>
-              <p className="text-on-secondary-container text-sm mb-6">Perfect for mid-sized enterprises.</p>
-              <div className="mb-8">
-                <span className="text-4xl font-extrabold text-on-secondary-fixed">$199</span>
-                <span className="text-on-secondary-container">/month</span>
+            {/* Gold Plan - Most Popular */}
+            <motion.div variants={childVariant} className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border-2 border-amber-500 shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white font-inter text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-widest z-10 shadow-lg whitespace-nowrap">
+                Most Popular ⭐
               </div>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed font-semibold"><span className="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">check_circle</span> Up to 100 employees</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed font-semibold"><span className="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">check_circle</span> Geospatial verified check-ins</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed font-semibold"><span className="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">check_circle</span> Automated payroll & tax</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed font-semibold"><span className="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">check_circle</span> Performance tracking</li>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold mb-4 w-fit mt-3">
+                <span className="material-symbols-outlined text-sm">stars</span>
+                Gold
+              </div>
+              <p className="text-on-secondary-container text-sm mb-4">For growing businesses</p>
+              <div className="mb-3 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-on-secondary-fixed blur-sm select-none">₹X,XXX</span>
+                <span className="text-base text-on-secondary-container">/month</span>
+              </div>
+              <p className="text-sm font-semibold text-amber-600 mb-6">Up to 50 Employees</p>
+              <ul className="space-y-3 mb-6 flex-1">
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> All Silver Features</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> Asset Management & Tracking</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> Expense & Travel Management</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> Expense Approval Workflow</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> Automated Reimbursements</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> Advanced Reports & Analytics</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-amber-500 text-base shrink-0">check_circle</span> Policy-based Expense Controls</li>
               </ul>
-              <button className="w-full py-3 rounded-lg bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:scale-[1.02] transition-all">Get Started</button>
+              <button className="w-full py-3 rounded-lg bg-amber-500 text-white font-bold shadow-lg shadow-amber-500/30 hover:bg-amber-600 hover:scale-[1.02] transition-all">Free Trial</button>
             </motion.div>
 
-            <motion.div variants={childVariant} className="bg-surface-container-lowest p-8 md:p-10 rounded-2xl border border-outline-variant/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
-              <h3 className="font-headline font-bold text-xl text-on-secondary-fixed mb-2">Enterprise</h3>
-              <p className="text-on-secondary-container text-sm mb-6">For large-scale global operations.</p>
-              <div className="mb-8">
-                <span className="text-4xl font-extrabold text-on-secondary-fixed">Custom</span>
+            {/* Diamond Plan */}
+            <motion.div variants={childVariant} className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border-2 border-blue-600 shadow-lg shadow-blue-600/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col h-full">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mb-4 w-fit">
+                <span className="material-symbols-outlined text-sm">diamond</span>
+                Diamond
               </div>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Unlimited employees</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Advanced security & SSO</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Dedicated account manager</li>
-                <li className="flex items-start gap-3 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-primary text-lg shrink-0 mt-0.5">check_circle</span> Custom API integrations</li>
+              <p className="text-on-secondary-container text-sm mb-4">For professional enterprises</p>
+              <div className="mb-3 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-on-secondary-fixed blur-sm select-none">₹X,XXX</span>
+                <span className="text-base text-on-secondary-container">/month</span>
+              </div>
+              <p className="text-sm font-semibold text-blue-600 mb-6">Up to 50 Employees</p>
+              <ul className="space-y-3 mb-6 flex-1">
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> All Gold Features</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> Helpdesk & Ticketing System</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> Workflow Automation</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> Performance & OKRs</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> 360° Reviews & Goal Tracking</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> Real-time Dashboards & Insights</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-blue-600 text-base shrink-0">check_circle</span> Advanced Role-based Access</li>
               </ul>
-              <button className="w-full py-3 rounded-lg border-2 border-on-secondary-fixed text-on-secondary-fixed font-bold hover:bg-on-secondary-fixed hover:text-white transition-all">Contact Sales</button>
+              <button className="w-full py-3 rounded-lg bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:scale-[1.02] transition-all">Free Trial</button>
+            </motion.div>
+
+            {/* Platinum Plan - Enterprise */}
+            <motion.div variants={childVariant} className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border-2 border-purple-600 shadow-xl shadow-purple-600/20 hover:shadow-purple-600/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-600 text-white font-inter text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-widest z-10 shadow-lg whitespace-nowrap">
+                Enterprise 🏢
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-bold mb-4 w-fit mt-3">
+                <span className="material-symbols-outlined text-sm">military_tech</span>
+                Platinum
+              </div>
+              <p className="text-on-secondary-container text-sm mb-4">For large-scale operations</p>
+              <div className="mb-3 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-on-secondary-fixed text-purple-600">Custom</span>
+              </div>
+              <p className="text-sm font-semibold text-purple-600 mb-6">Unlimited Users</p>
+              <ul className="space-y-3 mb-6 flex-1">
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> All Premium Features</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> Custom Workflow Development</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> API Integrations</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> Dedicated Account Manager</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> Advanced Security & SSO</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> Custom Reports & BI Dashboards</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> Priority Support & SLA</li>
+                <li className="flex items-start gap-2 text-sm text-on-secondary-fixed"><span className="material-symbols-outlined text-purple-600 text-base shrink-0">check_circle</span> Scalable Infrastructure</li>
+              </ul>
+              <button className="w-full py-3 rounded-lg bg-purple-600 text-white font-bold shadow-lg shadow-purple-600/30 hover:bg-purple-700 hover:scale-[1.02] transition-all">Contact Teams</button>
             </motion.div>
           </motion.div>
         </div>
@@ -666,22 +741,22 @@ export default function Home() {
           >
             {[
               {
-                quote: "HRabhiyaan fundamentally changed how we manage our global remote team. The geospatial tracking alone saved us countless hours of manual verification.",
-                author: "Sarah Jenkins",
-                role: "CHRO, TechFlow Inc.",
-                img: "https://i.pravatar.cc/150?img=47"
+                quote: "HRabhiyaan transformed how we manage our pan-India remote team. The geospatial tracking alone saved us countless hours of manual verification across multiple states.",
+                author: "Priya Sharma",
+                role: "CHRO, Infoserve Technologies",
+                img: "https://res.cloudinary.com/da00qz5zp/image/upload/v1776777965/premium_photo-1664478244612-d4b3238abd81_koyizp.avif"
               },
               {
-                quote: "We consolidated 4 different HR tools into just HRabhiyaan. The Smart Dashboard gives our executive team the real-time metrics they've always wanted.",
-                author: "David Chen",
-                role: "VP of People Operations, ScaleUp",
-                img: "https://i.pravatar.cc/150?img=11"
+                quote: "We consolidated 4 different HR tools into just HRabhiyaan. The Smart Dashboard gives our executive team real-time metrics they've always wanted across all our offices.",
+                author: "Rahul Mehta",
+                role: "VP of People Operations, CloudNine",
+                img: "https://res.cloudinary.com/da00qz5zp/image/upload/v1776777965/photo-1563713076139-d9f44e576124_mw9e91.avif"
               },
               {
-                quote: "The native messaging and automated workflows mean our employees actually enjoy using their HR software now. It's a game-changer for engagement.",
-                author: "Elena Rodriguez",
-                role: "Director of HR, Global Retail",
-                img: "https://i.pravatar.cc/150?img=5"
+                quote: "The native messaging and automated workflows mean our employees actually enjoy using their HR software now. It's a game-changer for engagement in our startup.",
+                author: "Ananya Reddy",
+                role: "Director of HR, TechNova India",
+                img: "https://res.cloudinary.com/da00qz5zp/image/upload/v1776777965/istockphoto-2216052190-612x612_sb9i2h.webp"
               }
             ].map((t, i) => (
               <motion.div key={i} variants={childVariant} className="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all cursor-default relative flex flex-col">

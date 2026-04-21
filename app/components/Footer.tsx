@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaApple, FaGooglePlay, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaApple, FaGooglePlay, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 // Static year to avoid hydration mismatch and client-side date calculation
 const CURRENT_YEAR = 2024;
@@ -14,14 +14,14 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-surface-container-low mt-24 md:mt-32">
+    <footer className="bg-surface-container-low mt-0 md:mt-0">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           
           {/* Brand Column */}
           <div className="lg:col-span-4">
             <Link href="/" className="inline-block mb-6" aria-label="HRabhiyaan Home">
-              <div className="relative h-24 md:h-28 w-72 md:w-80">
+              <div className="relative h-34 md:h-38 w-72 md:w-80">
                 <Image
                   src="/hrabhiyaan-logo.png"
                   alt="HRabhiyaan Logo"
@@ -39,10 +39,9 @@ export function Footer() {
             
             <div className="flex items-center gap-4">
               {[ 
-                { icon: FaTwitter, href: '#', label: 'Twitter' },
-                { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
-                { icon: FaInstagram, href: '#', label: 'Instagram' },
-                { icon: FaYoutube, href: '#', label: 'YouTube' }
+                { icon: FaLinkedin, href: 'https://www.linkedin.com/company/hrabhiyaan/', label: 'LinkedIn' },
+                { icon: FaFacebook, href: 'https://www.facebook.com/hrabhiyaan/', label: 'Facebook' },
+                { icon: FaInstagram, href: 'https://www.instagram.com/hrabhiyaan/', label: 'Instagram' }
               ].map((social) => (
                 <Link
                   key={social.label}
@@ -93,7 +92,8 @@ export function Footer() {
             
             <div className="hidden lg:block mt-auto pt-8">
               <Link 
-                href="#" 
+                href={process.env.NEXT_PUBLIC_APP_DOWNLOAD_URL || '#'} 
+                target="_blank"
                 className="group flex items-center gap-3 bg-surface-container-high hover:bg-primary text-foreground hover:text-white px-4 py-3 rounded-xl border border-outline-variant/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 w-full will-change-transform"
               >
                 <FaGooglePlay className="text-lg shrink-0 transition-transform group-hover:scale-110" />
@@ -138,7 +138,8 @@ export function Footer() {
             </Link>
 
             <Link 
-              href="#" 
+              href={process.env.NEXT_PUBLIC_APP_DOWNLOAD_URL || '#'} 
+              target="_blank"
               className="group flex items-center gap-2 bg-surface-container-high hover:bg-primary text-foreground hover:text-white px-3 py-2 rounded-lg border border-outline-variant/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 will-change-transform"
             >
               <FaGooglePlay className="text-base shrink-0 transition-transform group-hover:scale-110" />

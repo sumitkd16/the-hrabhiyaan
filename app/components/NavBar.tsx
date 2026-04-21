@@ -61,8 +61,12 @@ export function NavBar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="tertiary">Log In</Button>
-            <Button variant="primary">Get Started</Button>
+            <Link href="/login">
+              <Button variant="tertiary">Log In</Button>
+            </Link>
+            <Link href="/demo">
+              <Button variant="primary">Get a Demo</Button>
+            </Link>
           </div>
 
           <button
@@ -93,8 +97,8 @@ export function NavBar() {
               </Link>
             ))}
             <div className="h-px bg-outline-variant/20 my-2" />
-            <Button variant="tertiary" className="justify-start px-0">Log In</Button>
-            <Button variant="primary" className="w-full">Get Started</Button>
+            <Link href="/login" className="font-inter font-medium text-lg" onClick={() => setMobileMenuOpen(false)}>Log In</Link>
+            <Link href="/demo" className="font-inter font-medium text-lg text-primary" onClick={() => setMobileMenuOpen(false)}>Get a Demo</Link>
           </motion.div>
         )}
       </AnimatePresence>

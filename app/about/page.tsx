@@ -25,7 +25,7 @@ export default function About() {
         {/* Left Column: Story */}
         <div className="md:col-span-7 prose prose-lg dark:prose-invert max-w-none font-inter text-muted space-y-8">
           <p className="text-xl text-foreground font-medium leading-relaxed">
-            HRabhiyaan was born out of <strong className="text-primary font-bold">Alsol Technology Solutions</strong>, a globally-minded innovation firm headquartered in India.
+            HRabhiyaan was born out of <strong className="text-primary font-bold">Alsol Technology Solution</strong>, a globally-minded innovation firm headquartered in India.
           </p>
           
           <p>
@@ -48,7 +48,7 @@ export default function About() {
         {/* Right Column: Key Stats / Parent Info */}
         <div className="md:col-span-5 space-y-8">
           <div className="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/15 shadow-ambient hover:shadow-xl transition-all">
-            <h3 className="font-headline font-bold text-xl text-foreground mb-4">Backed by Alsol Tech</h3>
+            <h3 className="font-headline font-bold text-xl text-foreground mb-4">Backed by AlsolTech</h3>
             <p className="font-inter text-sm text-muted mb-6">
               Our engineering foundation relies on Alsol Technology Solution's established industry expertise across global software delivery.
             </p>
@@ -92,7 +92,7 @@ export default function About() {
       >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold font-headline text-foreground mb-6">Our Core Values</h2>
-          <p className="text-lg text-muted max-w-2xl mx-auto">The principles that drive our engineering, design, and customer success teams every single day at Alsol Tech.</p>
+          <p className="text-lg text-muted max-w-2xl mx-auto">The principles that drive our engineering, design, and customer success teams every single day at AlsolTech.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -137,22 +137,77 @@ export default function About() {
           <div>
             <h2 className="text-3xl md:text-5xl font-bold font-headline mb-6">A Global Mission</h2>
             <p className="text-white/90 text-lg max-w-lg mb-8 leading-relaxed">
-              From our headquarters in West Bengal, India, Alsol Technology Solutions is powering HR transformation for forward-thinking enterprises across the globe.
+              From our headquarters in West Bengal, India, Alsol Technology Solution is powering HR transformation for forward-thinking enterprises across the globe.
             </p>
             <div className="flex gap-6">
               <div>
-                <p className="text-4xl font-bold font-headline mb-1">50+</p>
+                <p className="text-4xl font-bold font-headline mb-1">10+</p>
                 <p className="text-sm text-white font-medium uppercase tracking-widest">Countries</p>
               </div>
               <div className="w-px bg-white/20"></div>
               <div>
-                <p className="text-4xl font-bold font-headline mb-1">10k+</p>
+                <p className="text-4xl font-bold font-headline mb-1">2k+</p>
                 <p className="text-sm text-white font-medium uppercase tracking-widest">Active Users</p>
               </div>
               <div className="w-px bg-white/20"></div>
               <div>
                 <p className="text-4xl font-bold font-headline mb-1">99.9%</p>
                 <p className="text-sm text-white font-medium uppercase tracking-widest">Uptime</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Leadership Team */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="mt-24 md:mt-32"
+      >
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold font-headline text-foreground mb-6">Our Leadership</h2>
+          <p className="text-lg text-muted max-w-2xl mx-auto">Meet the team driving HRabhiyaan's vision of transforming enterprise workforce management.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Founder & Director */}
+          <div className="bg-surface-container-low p-8 rounded-3xl border border-outline-variant/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6">
+              <span className="material-symbols-outlined text-3xl">person</span>
+            </div>
+            <h3 className="text-xl font-bold font-headline text-foreground mb-2">CEO & Director</h3>
+            <p className="text-primary font-medium mb-4">Leadership Role</p>
+            <p className="text-muted text-sm leading-relaxed">
+              Leading HRabhiyaan's strategic vision and overall business direction. Driving innovation in HR technology solutions.
+            </p>
+            <div className="mt-6 pt-6 border-t border-outline-variant/10">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">S</div>
+                </div>
+                <span className="text-sm font-medium text-foreground">Manas D.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Co-Founder */}
+          <div className="bg-surface-container-low p-8 rounded-3xl border border-outline-variant/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6">
+              <span className="material-symbols-outlined text-3xl">person</span>
+            </div>
+            <h3 className="text-xl font-bold font-headline text-foreground mb-2">Co-Founder</h3>
+            <p className="text-primary font-medium mb-4">Technology & Operations</p>
+            <p className="text-muted text-sm leading-relaxed">
+              Overseeing technology development and operational excellence. Ensuring seamless delivery of enterprise solutions.
+            </p>
+            <div className="mt-6 pt-6 border-t border-outline-variant/10">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">A</div>
+                </div>
+                <span className="text-sm font-medium text-foreground">Anirban</span>
               </div>
             </div>
           </div>
