@@ -157,7 +157,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-8 pb-12 md:pt-12 md:pb-16 px-4 sm:px-6 md:px-8">
+      <section className="relative overflow-hidden pt-4 pb-12 md:pt-6 md:pb-16 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
 
           {/* LEFT SIDE - Text Content (first on mobile) */}
@@ -177,15 +177,21 @@ export default function Home() {
               <Link href="/demo" className="bg-primary text-on-primary px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-primary-container hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base">
                 Book a Free Demo
               </Link>
-              <a href="#features" className="bg-secondary-container text-on-secondary-fixed px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold hover:bg-surface-container-high hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base cursor-pointer">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-secondary-container text-on-secondary-fixed px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold hover:bg-surface-container-high hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center text-sm md:text-base cursor-pointer"
+              >
                 Explore Features
-              </a>
+              </button>
             </div>
           </motion.div>
 
           {/* RIGHT SIDE - Dashboard (second on mobile) */}
           <motion.div
-            className="relative h-full"
+            className="relative h-full lg:-mt-6"
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
@@ -250,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* USP (Geospatial Intelligence) */}
-      <section id="features" className="py-20 md:py-32 px-6 md:px-8 bg-surface">
+      <section id="features" className="py-16 md:py-24 px-6 md:px-8 bg-surface">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div className="order-2 lg:order-1 relative" {...fadeInUp}>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/20 group">
@@ -323,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* Features Bento Grid - CLEAN DESIGN */}
-      <section ref={sectionRef} className="py-20 md:py-32 bg-surface-container-low px-6 md:px-8 overflow-hidden">
+      <section ref={sectionRef} className="py-16 md:py-24 bg-surface-container-low px-6 md:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div className="text-center mb-12 md:mb-16" {...fadeInUp}>
             <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-4">Unified HR Operations</h2>
@@ -431,7 +437,7 @@ export default function Home() {
       </section>
 
       {/* Messenger & Integrations */}
-      <section className="py-20 md:py-32 px-6 md:px-8 overflow-hidden">
+      <section className="py-16 md:py-24 px-6 md:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-20 mb-20 md:mb-32">
             <motion.div className="flex-1 w-full" {...fadeInUp}>
@@ -535,7 +541,7 @@ export default function Home() {
       </section>
 
       {/* Mobile App Promo */}
-      <section className="py-20 md:py-24 px-6 md:px-8 overflow-hidden bg-surface">
+      <section className="py-16 md:py-20 px-6 md:px-8 overflow-hidden bg-surface">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -606,7 +612,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Table */}
-      <section className="py-20 md:py-32 px-6 md:px-8 bg-surface">
+      <section className="py-16 md:py-24 px-6 md:px-8 bg-surface">
         <div className="max-w-7xl mx-auto">
           <motion.div className="text-center mb-12 md:mb-16" {...fadeInUp}>
             <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-4">Scalable Plans for Every Stage</h2>
@@ -726,7 +732,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-32 px-6 md:px-8 bg-surface-container-low border-b border-outline-variant/10">
+      <section className="py-16 md:py-24 px-6 md:px-8 bg-surface-container-low border-b border-outline-variant/10">
         <div className="max-w-7xl mx-auto">
           <motion.div className="text-center mb-12 md:mb-16" {...fadeInUp}>
             <h2 className="font-headline text-3xl md:text-[2.5rem] font-bold text-on-secondary-fixed tight-headline mb-4">Loved by HR Leaders</h2>
@@ -779,7 +785,7 @@ export default function Home() {
       </section>
 
       {/* Blog Feed */}
-      <section className="py-20 md:py-32 bg-surface-container-low px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-surface-container-low px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6" {...fadeInUp}>
             <div>

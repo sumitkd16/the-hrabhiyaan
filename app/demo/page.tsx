@@ -167,9 +167,9 @@ export default function DemoPage() {
       setShowSuccess(true);
     } catch (error) {
       console.error('Submission error:', error);
-      setErrors(prev => ({ 
-        ...prev, 
-        submit: error instanceof Error ? error.message : 'Failed to submit. Please try again.' 
+      setErrors(prev => ({
+        ...prev,
+        submit: error instanceof Error ? error.message : 'Failed to submit. Please try again.'
       }));
     } finally {
       setIsSubmitting(false);
@@ -189,7 +189,7 @@ export default function DemoPage() {
     <div className="min-h-screen bg-surface">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          
+
           {/* Left Side - Form Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -199,7 +199,22 @@ export default function DemoPage() {
             <Link href="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-8 font-inter">
               ← Back to home
             </Link>
-            
+
+            {/* Doodle Image at Top - Optimized Size */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              className="relative rounded-3xl overflow-hidden shadow-xl border border-outline-variant/10 bg-white mb-12 max-w-lg mx-auto lg:mx-0"
+            >
+              <img
+                src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776850621/demo_hrms_pviuht.png"
+                alt="HRabhiyaan Ecosystem Doodle"
+                className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
+            </motion.div>
+
             <h1 className="font-headline text-3xl md:text-4xl font-bold text-on-secondary-fixed tight-headline mb-4">
               Book Your Free Demo
             </h1>
@@ -207,45 +222,22 @@ export default function DemoPage() {
               See how HRabhiyaan can transform your HR operations. Our team will customize a demo based on your specific needs.
             </p>
 
-            <div className="space-y-6 mb-10">
+            <div className="space-y-8 mb-10">
               {[
                 { icon: FiClock, title: '30-minute personalized session', desc: 'Get a walkthrough tailored to your industry and team size' },
                 { icon: FiUsers, title: 'Expert guidance', desc: 'Our HR tech specialists will answer all your questions' },
                 { icon: FiShield, title: 'No commitment required', desc: 'Explore the platform risk-free with your team' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="text-primary text-xl" />
+                <div key={i} className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <item.icon className="text-xl" />
                   </div>
                   <div>
-                    <h4 className="font-inter font-semibold text-on-secondary-fixed">{item.title}</h4>
-                    <p className="font-inter text-sm text-on-secondary-container">{item.desc}</p>
+                    <h4 className="font-inter font-semibold text-on-secondary-fixed text-lg mb-1">{item.title}</h4>
+                    <p className="font-inter text-sm text-on-secondary-container leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="flex -space-x-3">
-                  {['https://i.pravatar.cc/100?img=45', 'https://i.pravatar.cc/100?img=53', 'https://i.pravatar.cc/100?img=44'].map((src, i) => (
-                    <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white" alt="User" />
-                  ))}
-                </div>
-                <div>
-                  <p className="font-inter font-semibold text-on-secondary-fixed text-sm">500+ companies trust HRabhiyaan</p>
-                  <div className="flex items-center gap-1">
-                    {[1,2,3,4,5].map(s => (
-                      <svg key={s} className="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    ))}
-                    <span className="text-xs text-on-secondary-container ml-1">4.9/5 rating</span>
-                  </div>
-                </div>
-              </div>
-              <p className="font-inter text-sm text-on-secondary-container italic">
-                "Switched from Keka and cut costs by 50%. The geospatial attendance alone saves 20 hours monthly."
-              </p>
-              <p className="font-inter text-xs text-on-secondary-fixed font-medium mt-2">— Priya Sharma, CHRO at Infoserve Technologies</p>
             </div>
           </motion.div>
 
