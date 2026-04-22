@@ -1,7 +1,5 @@
-export const runtime = 'nodejs';
-
 import { NextRequest, NextResponse } from 'next/server';
-import * as nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 interface DemoFormData {
   companyName: string;
@@ -14,24 +12,41 @@ interface DemoFormData {
   website: string;
 }
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
-
 export async function POST(request: NextRequest) {
   try {
+    // Check for required environment variables
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('Missing SMTP configuration. Please check your environment variables.');
+      return NextResponse.json(
+        { error: 'Email service is currently unavailable' },
+        { status: 503 }
+      );
+    }
+
     const data: DemoFormData = await request.json();
 
+    // Validation
     if (!data.companyName || !data.firstName || !data.lastName || !data.companyEmail || !data.mobileNumber || !data.employeeCount || !data.website) {
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
       );
     }
+
+    // Create email transporter
+    // Using explicit host and port is more reliable in production (Netlify/Vercel)
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // Use SSL
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      // Increase timeout for serverless environments
+      connectionTimeout: 10000, 
+      greetingTimeout: 10000,
+    });
 
     const logoUrl = process.env.EMAIL_LOGO_URL || 'https://res.cloudinary.com/da00qz5zp/image/upload/v1776686174/HRabhiyaan_Logo_1-removebg-preview_1_dikx1u.png';
 
@@ -188,10 +203,16 @@ export async function POST(request: NextRequest) {
       { message: 'Demo request submitted successfully' },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('Demo form submission error:', error);
+  } catch (error: any) {
+    console.error('Demo form submission error details:', {
+      message: error?.message,
+      code: error?.code,
+      command: error?.command,
+      response: error?.response
+    });
+    
     return NextResponse.json(
-      { error: 'Failed to submit demo request' },
+      { error: 'Failed to submit demo request. Please try again later.' },
       { status: 500 }
     );
   }

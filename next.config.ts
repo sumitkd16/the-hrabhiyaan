@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  
   // Image optimization for static export
   images: {
     unoptimized: true, // Required for static export, but we'll use <img> with srcset manually

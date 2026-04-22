@@ -83,6 +83,7 @@ interface FormErrors {
   mobileNumber?: string;
   employeeCount?: string;
   website?: string;
+  submit?: string;
 }
 
 interface DemoRequestModalProps {
@@ -178,23 +179,45 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    setTimeout(() => {
-      setShowSuccess(false);
-      onClose();
-      setFormData({
-        companyName: '',
-        firstName: '',
-        lastName: '',
-        companyEmail: '',
-        countryCode: '+91',
-        mobileNumber: '',
-        employeeCount: '',
-        website: '',
+    setErrors({});
+
+    try {
+      const response = await fetch('/api/demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-    }, 2000);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit');
+      }
+
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+        onClose();
+        setFormData({
+          companyName: '',
+          firstName: '',
+          lastName: '',
+          companyEmail: '',
+          countryCode: '+91',
+          mobileNumber: '',
+          employeeCount: '',
+          website: '',
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('Submission error:', error);
+      setErrors(prev => ({ 
+        ...prev, 
+        submit: error instanceof Error ? error.message : 'Failed to submit. Please try again.' 
+      }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
@@ -239,6 +262,13 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                 <FiX size={20} />
               </button>
             </div>
+
+            {errors.submit && (
+              <div className="mx-6 mt-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2">
+                <FiAlertCircle className="text-red-500 shrink-0" />
+                <span className="text-red-600 text-sm font-inter">{errors.submit}</span>
+              </div>
+            )}
 
             {showSuccess ? (
               <motion.div

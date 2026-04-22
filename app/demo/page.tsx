@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FiX, FiCheck, FiAlertCircle, FiArrowRight, FiShield, FiClock, FiUsers, FiCheckCircle } from 'react-icons/fi';
@@ -66,6 +66,7 @@ interface FormErrors {
   mobileNumber?: string;
   employeeCount?: string;
   website?: string;
+  submit?: string;
 }
 
 export default function DemoPage() {
@@ -84,6 +85,23 @@ export default function DemoPage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [showEmployeeDropdown, setShowEmployeeDropdown] = useState(false);
+
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
+  const employeeDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setShowCountryDropdown(false);
+      }
+      if (employeeDropdownRef.current && !employeeDropdownRef.current.contains(event.target as Node)) {
+        setShowEmployeeDropdown(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -131,6 +149,8 @@ export default function DemoPage() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setErrors({});
+
     try {
       const response = await fetch('/api/demo', {
         method: 'POST',
@@ -138,13 +158,19 @@ export default function DemoPage() {
         body: JSON.stringify(formData),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to submit');
+        throw new Error(result.error || 'Failed to submit');
       }
+
       setShowSuccess(true);
     } catch (error) {
       console.error('Submission error:', error);
-      setErrors(prev => ({ ...prev, companyName: 'Failed to submit. Please try again.' }));
+      setErrors(prev => ({ 
+        ...prev, 
+        submit: error instanceof Error ? error.message : 'Failed to submit. Please try again.' 
+      }));
     } finally {
       setIsSubmitting(false);
     }
@@ -152,8 +178,8 @@ export default function DemoPage() {
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    if (field in errors) {
-      setErrors(prev => ({ ...prev, [field]: undefined as any }));
+    if (errors[field as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
     }
   };
 
@@ -203,7 +229,7 @@ export default function DemoPage() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex -space-x-3">
                   {['https://i.pravatar.cc/100?img=45', 'https://i.pravatar.cc/100?img=53', 'https://i.pravatar.cc/100?img=44'].map((src, i) => (
-                    <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white" />
+                    <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white" alt="User" />
                   ))}
                 </div>
                 <div>
@@ -234,6 +260,14 @@ export default function DemoPage() {
                 <h3 className="font-headline font-bold text-white text-lg">Request Your Demo</h3>
                 <p className="text-white/70 text-sm font-inter">All fields are mandatory</p>
               </div>
+
+              {/* Global Submit Error */}
+              {errors.submit && (
+                <div className="mx-6 mt-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2">
+                  <FiAlertCircle className="text-red-500 shrink-0" />
+                  <span className="text-red-600 text-sm font-inter">{errors.submit}</span>
+                </div>
+              )}
 
               {showSuccess ? (
                 <motion.div
@@ -322,7 +356,7 @@ export default function DemoPage() {
                       Mobile Number <span className="text-red-500">*</span>
                     </label>
                     <div className="flex gap-3">
-                      <div className="relative w-32 shrink-0">
+                      <div className="relative w-32 shrink-0" ref={countryDropdownRef}>
                         <button
                           type="button"
                           onClick={() => setShowCountryDropdown(!showCountryDropdown)}
@@ -369,7 +403,7 @@ export default function DemoPage() {
                     <label className="font-inter text-sm font-medium text-on-secondary-fixed">
                       ACE Group (Number of Employees) <span className="text-red-500">*</span>
                     </label>
-                    <div className="relative">
+                    <div className="relative" ref={employeeDropdownRef}>
                       <button
                         type="button"
                         onClick={() => setShowEmployeeDropdown(!showEmployeeDropdown)}
