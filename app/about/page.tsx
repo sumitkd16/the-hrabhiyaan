@@ -187,7 +187,7 @@ export default function About() {
                 <div className="flex -space-x-2">
                   <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">S</div>
                 </div>
-                <span className="text-sm font-medium text-foreground">Manas D.</span>
+                <span className="text-sm font-medium text-foreground">Manas Das</span>
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function About() {
                 <div className="flex -space-x-2">
                   <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">A</div>
                 </div>
-                <span className="text-sm font-medium text-foreground">Anirban</span>
+                <span className="text-sm font-medium text-foreground">Subhashree Das</span>
               </div>
             </div>
           </div>

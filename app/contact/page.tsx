@@ -50,7 +50,7 @@ export default function Contact() {
               <div>
                 <h4 className="font-manrope font-bold text-foreground">Call us</h4>
                 <p className="font-inter text-muted text-sm mt-1">Mon-Fri (IST Business Hours).</p>
-                <a href="tel:+919876543210" className="font-inter text-primary font-medium mt-2 block hover:underline">+91 98765 43210</a>
+                <a href="tel:+919477495264" className="font-inter text-primary font-medium mt-2 block hover:underline">+91 9477495264</a>
               </div>
             </div>
 
@@ -61,7 +61,7 @@ export default function Contact() {
               <div>
                 <h4 className="font-manrope font-bold text-foreground">WhatsApp us</h4>
                 <p className="font-inter text-muted text-sm mt-1">Chat with our team anytime.</p>
-                <a href="https://wa.me/919748825910" target="_blank" rel="noopener noreferrer" className="font-inter text-primary font-medium mt-2 block hover:underline">+91 97488 25910</a>
+                <a href="https://wa.me/919477495264" target="_blank" rel="noopener noreferrer" className="font-inter text-primary font-medium mt-2 block hover:underline">+91 9477495264</a>
               </div>
             </div>
 
