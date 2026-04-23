@@ -81,19 +81,61 @@ export default function Contact() {
         </motion.div>
 
         <motion.div
-           initial={{ opacity: 0, x: 20 }}
-           animate={{ opacity: 1, x: 0 }}
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={{ opacity: 1, scale: 1 }}
            transition={{ delay: 0.2 }}
-           className="flex items-center justify-center bg-surface-container-low rounded-2xl p-8"
+           className="bg-primary text-white rounded-[3rem] p-10 md:p-12 relative overflow-hidden shadow-2xl flex flex-col justify-center min-h-[500px]"
         >
-          <div className="text-center">
-            <h3 className="text-xl font-headline font-bold text-foreground mb-4">Ready to get started?</h3>
-            <p className="font-inter text-muted mb-8 leading-relaxed">
-              Fill in your details and our team will get back to you within 24 hours.
-            </p>
-            <Button variant="primary" onClick={() => setShowDemoModal(true)} className="px-8 py-4 text-base">
-              Request a Demo
-            </Button>
+
+          <div className="relative z-10">
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mb-8 max-w-[400px] mx-auto"
+            >
+              <img 
+                src="https://res.cloudinary.com/da00qz5zp/image/upload/v1776864567/Contact_page_vector_zb5amf.png" 
+                alt="Experience HRabhiyaan" 
+                className="w-full h-auto drop-shadow-2xl brightness-110 scale-105 md:scale-115 origin-bottom"
+              />
+            </motion.div>
+
+            <div className="text-center">
+              <h3 className="text-3xl md:text-4xl font-headline font-bold mb-6 leading-tight">
+                Ready to transform your workforce?
+              </h3>
+              <p className="font-inter text-white/80 mb-10 leading-relaxed text-lg max-w-md mx-auto">
+                Join the HR revolution. Fill in your details and our team will get back to you within 24 hours to schedule your personalized walkthrough.
+              </p>
+              
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <Button 
+                  variant="secondary" 
+                  onClick={() => setShowDemoModal(true)} 
+                  className="px-10 py-5 text-lg rounded-2xl bg-white text-primary font-bold shadow-xl hover:bg-white/90 hover:scale-105 transition-all w-full md:w-auto shrink-0"
+                >
+                  Request Your Demo
+                </Button>
+                
+                <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-2xl border border-white/10 backdrop-blur-sm">
+                  <div className="flex -space-x-3">
+                    {[1, 2, 3].map((i) => (
+                      <img 
+                        key={i} 
+                        src={`https://i.pravatar.cc/100?u=hr${i}`} 
+                        className="w-8 h-8 rounded-full border-2 border-primary bg-white/10" 
+                        alt="User" 
+                      />
+                    ))}
+                  </div>
+                  <div className="text-left">
+                    <p className="text-white font-bold text-xs leading-none">100+ Companies</p>
+                    <p className="text-white/60 text-[10px] uppercase tracking-wider">Trust HRabhiyaan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
